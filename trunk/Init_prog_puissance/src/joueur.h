@@ -4,6 +4,10 @@
 #include <stdio.h>
 
 
+#include "deplacement_pion.h"
+#include "initialisation.h"
+#include "interface_graphique.h"
+
 
 unsigned char alternancejoueur(unsigned char tour,SDL_Surface *ecran,SDL_Surface *imageDeFond,SDL_Rect positionFond,FSOUND_SAMPLE *pion) ;
 
