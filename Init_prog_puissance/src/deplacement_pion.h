@@ -8,7 +8,7 @@
 #include "interface_graphique.h"
 
 typedef struct Couleur{
-	char rouge,jaune;
+	char couleur;
 };
 
 unsigned short position_pion(SDL_Surfece *ecran, SDL_Surfece *imageFond, SDL_Rect positionFond, unsigned short terrin[][colonne]);
