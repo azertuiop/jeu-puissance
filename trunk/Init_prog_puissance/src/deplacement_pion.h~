@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 
+#include "initialisation.h"
+#include "joueur.h"
+#include "interface_graphique.h"
+
 typedef struct Couleur{
 	char rouge,jaune;
 };
