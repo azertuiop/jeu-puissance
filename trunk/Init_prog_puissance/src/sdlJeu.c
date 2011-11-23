@@ -13,7 +13,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
 	int dimx, dimy;
-	
+
 	pJeu = &(pSdlJeu->jeu);
 	jeuInit(pJeu);
 
@@ -25,17 +25,17 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimy = dimy * TAILLE_SPRITE;
 	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
 	assert( pSdlJeu->surface_ecran!=NULL);
-	SDL_WM_SetCaption( "Pacman v0.1", NULL );
+	SDL_WM_SetCaption( "Puissance 4", NULL );
 
-	pSdlJeu->surface_pacman = SDL_load_image("data/***********.bmp");
-	if (pSdlJeu->surface_pacman==NULL)
-		pSdlJeu->surface_pacman = SDL_load_image("***********.bmp");
-	assert( pSdlJeu->surface_pacman!=NULL);
+	pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
+	if (pSdlJeu->surface_puissance==NULL)
+		pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
+	assert( pSdlJeu->surface_puissance!=NULL);
 
-	pSdlJeu->surface_mur = SDL_load_image("************.bmp");
-	if (pSdlJeu->surface_mur==NULL)
-		pSdlJeu->surface_mur = SDL_load_image("*************.bmp");
-	assert( pSdlJeu->surface_mur!=NULL);
+	pSdlJeu->surface_case = SDL_load_image("/data/images/casevide.bmp");
+	if (pSdlJeu->surface_case==NULL)
+		pSdlJeu->surface_case = SDL_load_image("/data/images/casevide.bmp");
+	//assert( pSdlJeu->surface_case!=NULL);
 }
 
 
@@ -45,7 +45,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	int x,y;
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
-	const Pacman *pPac = jeuGetConstPacmanPtr(&(pSdlJeu->jeu));
+	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 
 	/* Remplir l'écran de blanc */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0xFF, 0xFF ) );
@@ -53,10 +53,10 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
-				SDL_apply_surface(  pSdlJeu->surface_mur, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+				SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 
 	/* Copier le sprite de Pacman sur l'écran */
-	SDL_apply_surface(  pSdlJeu->surface_pacman, pSdlJeu->surface_ecran, pacGetX(pPac)*TAILLE_SPRITE,  pacGetY(pPac)*TAILLE_SPRITE );
+	SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
 }
 
 
@@ -73,7 +73,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	while ( continue_boucle == 1 )
 	{
 		/* tant qu'il y a des evenements à traiter : cette boucle n'est pas bloquante */
-		
+
 		/*	ICI , il faut intégré les actions de la sourie (insertion pion)*/
 		while ( SDL_PollEvent( &event ) )
 		{
@@ -81,7 +81,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-			/* Si l'utilisateur a appuyé sur une touche 
+			/* Si l'utilisateur a appuyé sur une touche
 				il faut utiliser sourie a la place de clavier
 			*/
 			if ( event.type == SDL_KEYDOWN )
@@ -117,8 +117,8 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
-	SDL_FreeSurface( pSdlJeu->surface_pacman );
-	SDL_FreeSurface( pSdlJeu->surface_mur );
+	SDL_FreeSurface( pSdlJeu->surface_puissance );
+	SDL_FreeSurface( pSdlJeu->surface_case );
 	SDL_Quit();
 }
 
