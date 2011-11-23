@@ -1,0 +1,41 @@
+#include "Puissance.h"
+
+
+void pacInit(Puissance *pPac)
+{
+	pPac->x=pPac->y=0;
+}	
+
+void pacGauche(Puissance *pPac, const Terrain *pTer)
+{
+	if (terEstPositionPersoValide( pTer, pPac->x-1, pPac->y))
+		pPac->x--;
+}
+
+void pacDroite(Puissance *pPac, const Terrain *pTer)
+{
+	if (terEstPositionPersoValide( pTer, pPac->x+1, pPac->y))
+		pPac->x++;
+}
+
+void pacHaut(Puissance *pPac, const Terrain *pTer)
+{
+	if (terEstPositionPersoValide( pTer, pPac->x, pPac->y-1))
+		pPac->y--;
+}
+
+void pacBas(Puissance *pPac, const Terrain *pTer)
+{
+	if (terEstPositionPersoValide( pTer, pPac->x, pPac->y+1))
+		pPac->y++;
+}
+
+int pacGetX(const Puissance *pPac)
+{
+	return pPac->x;
+}
+
+int pacGetY(const Puissance *pPac)
+{
+	return pPac->y;
+}

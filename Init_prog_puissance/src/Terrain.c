@@ -6,12 +6,18 @@
 void terInit(Terrain *pTer)
 {
 	int x,y;
-	
-	const char terrain_defaut[6][7]; //// je ne sais pas ce qu'il faut mettre !!!!!! 
+
+	const char terrain_defaut[6][7]={
+    "..##...",
+	"..##...",
+	"..##...",
+	"..##...",
+	"..##...",
+	"..##..."}; //// je ne sais pas ce qu'il faut mettre !!!!!!
 
 	pTer->dimx = 6;
 	pTer->dimy = 7;
-	
+
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
 		pTer->tab[y] = (char *)malloc(sizeof(char)*pTer->dimx);
@@ -24,11 +30,11 @@ void terInit(Terrain *pTer)
 void terLibere(Terrain *pTer)
 {
 	int y;
-	
+
 	for (y=0; y<pTer->dimy; y++)
 		free(pTer->tab[y]);
 	free(pTer->tab);
-	
+
 	pTer->dimx = 0;
 	pTer->dimy = 0;
 	pTer->tab = NULL;
