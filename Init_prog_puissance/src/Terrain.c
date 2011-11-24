@@ -6,7 +6,7 @@
 void terInit(Terrain *pTer)
 {
 	int x,y;
-
+/*  A VOIR PARCEQUE NE FONCTIONNE PAS !!!!!!!!!!!!!!!!!!!! */
 	const char terrain_defaut[6][7]={
     "..##...",
 	"..##...",

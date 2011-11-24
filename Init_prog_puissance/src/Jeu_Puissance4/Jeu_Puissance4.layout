@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="../Jeu.c" open="1" top="0" tabpos="8">
-		<Cursor position="367" topLine="0" />
+		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="../Jeu.h" open="1" top="0" tabpos="9">
-		<Cursor position="213" topLine="0" />
+	<File name="../Jeu.h" open="1" top="1" tabpos="9">
+		<Cursor position="318" topLine="0" />
 	</File>
 	<File name="../Puissance.c" open="1" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
@@ -13,8 +13,8 @@
 	<File name="../Puissance.h" open="1" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="../Terrain.c" open="1" top="1" tabpos="5">
-		<Cursor position="230" topLine="0" />
+	<File name="../Terrain.c" open="1" top="0" tabpos="5">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="../Terrain.h" open="1" top="0" tabpos="6">
 		<Cursor position="0" topLine="0" />
@@ -23,7 +23,7 @@
 		<Cursor position="79" topLine="0" />
 	</File>
 	<File name="../sdlJeu.c" open="1" top="0" tabpos="3">
-		<Cursor position="882" topLine="9" />
+		<Cursor position="925" topLine="9" />
 	</File>
 	<File name="../sdlJeu.h" open="1" top="0" tabpos="4">
 		<Cursor position="105" topLine="0" />

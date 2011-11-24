@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PUISSANCE4: Référence du fichier /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main (copie).c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.7.4 -->
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PUISSANCE4</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('main_01_07copie_08_8c.html','');
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier main (copie).c</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="deplacement__pion_8h_source.html">deplacement_pion.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="initialisation_8h_source.html">initialisation.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="joueur_8h_source.html">joueur.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="interface__graphique_8h_source.html">interface_graphique.h</a>&quot;</code><br/>
+</div>
+<p><a href="main_01_07copie_08_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#ab91255237b66289306286a88c6a42009">taille_image</a>&#160;&#160;&#160;95</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#aeaf5554467dd36885328be3263590fd8">lignes</a>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#aaa9c2e62572bf353eac6189d7903d4be">colone</a>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#a1c68b7313bb60a43d49f7b0ca34f9b46">largeur_fenetre</a>&#160;&#160;&#160;colone * taille_image</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#ab27f621be1ef7edc969917453e3b9db6">hauteur_fenetre</a>&#160;&#160;&#160;lignes * taille_image</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#ac27df7545ae001079dd053dfc3024f07">CASEVIDE</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#a220f5e3ccc73cf279b93033390a1da06">casejaune</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#afae0ed4e692ae21505dbadbb61892154">caserouge</a>&#160;&#160;&#160;3</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_01_07copie_08_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+</table>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a220f5e3ccc73cf279b93033390a1da06"></a><!-- doxytag: member="main (copie).c::casejaune" ref="a220f5e3ccc73cf279b93033390a1da06" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define casejaune&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00020">20</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Référencé par <a class="el" href="main_01_07copie_08_8c_source.html#l00023">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afae0ed4e692ae21505dbadbb61892154"></a><!-- doxytag: member="main (copie).c::caserouge" ref="afae0ed4e692ae21505dbadbb61892154" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define caserouge&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00021">21</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Référencé par <a class="el" href="main_01_07copie_08_8c_source.html#l00023">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac27df7545ae001079dd053dfc3024f07"></a><!-- doxytag: member="main (copie).c::CASEVIDE" ref="ac27df7545ae001079dd053dfc3024f07" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CASEVIDE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00019">19</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa9c2e62572bf353eac6189d7903d4be"></a><!-- doxytag: member="main (copie).c::colone" ref="aaa9c2e62572bf353eac6189d7903d4be" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define colone&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00016">16</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab27f621be1ef7edc969917453e3b9db6"></a><!-- doxytag: member="main (copie).c::hauteur_fenetre" ref="ab27f621be1ef7edc969917453e3b9db6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define hauteur_fenetre&#160;&#160;&#160;lignes * taille_image</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00018">18</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Référencé par <a class="el" href="main_01_07copie_08_8c_source.html#l00023">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c68b7313bb60a43d49f7b0ca34f9b46"></a><!-- doxytag: member="main (copie).c::largeur_fenetre" ref="a1c68b7313bb60a43d49f7b0ca34f9b46" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define largeur_fenetre&#160;&#160;&#160;colone * taille_image</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00017">17</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Référencé par <a class="el" href="main_01_07copie_08_8c_source.html#l00023">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeaf5554467dd36885328be3263590fd8"></a><!-- doxytag: member="main (copie).c::lignes" ref="aeaf5554467dd36885328be3263590fd8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define lignes&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00015">15</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab91255237b66289306286a88c6a42009"></a><!-- doxytag: member="main (copie).c::taille_image" ref="ab91255237b66289306286a88c6a42009" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define taille_image&#160;&#160;&#160;95</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Définition des variables globales </p>
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00014">14</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Référencé par <a class="el" href="main_01_07copie_08_8c_source.html#l00023">main()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a><!-- doxytag: member="main (copie).c::main" ref="ae66f6b31b5ad750f1fe042a706a4e3d4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_01_07copie_08_8c_source.html#l00023">23</a> du fichier <a class="el" href="main_01_07copie_08_8c_source.html">main (copie).c</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00723">affichage_gagnant()</a>, <a class="el" href="main_8cpp_source.html#l00357">alternancejoueur()</a>, <a class="el" href="main_8cpp_source.html#l00482">balayage_colones()</a>, <a class="el" href="main_8cpp_source.html#l00558">balayage_diagonale_haut()</a>, <a class="el" href="main_8cpp_source.html#l00641">balayage_diagonale_haut_bis()</a>, <a class="el" href="main_8cpp_source.html#l00403">balayage_lignes()</a>, <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_01_07copie_08_8c_source.html#l00020">casejaune</a>, <a class="el" href="main_01_07copie_08_8c_source.html#l00021">caserouge</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, <a class="el" href="main_01_07copie_08_8c_source.html#l00018">hauteur_fenetre</a>, <a class="el" href="main_01_07copie_08_8c_source.html#l00017">largeur_fenetre</a>, <a class="el" href="main_8cpp_source.html#l00772">menu()</a>, <a class="el" href="main_8cpp_source.html#l00864">reinitialisation_des_scores()</a>, <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>, et <a class="el" href="main_01_07copie_08_8c_source.html#l00014">taille_image</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="main_01_07copie_08_8c.html">main (copie).c</a>      </li>
+      <li class="footer">Généré le Thu Nov 24 2011 13:12:04 pour PUISSANCE4 par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
+    </ul>
+  </div>
+
+</body>
+</html>

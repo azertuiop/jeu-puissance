@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PUISSANCE4: Référence du fichier /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/code_origine/main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.7.4 -->
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">PUISSANCE4</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('main_8cpp.html','');
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier main.cpp</div>  </div>
+</div>
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;SDL.h&gt;</code><br/>
+<code>#include &lt;SDL_image.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &lt;fmod.h&gt;</code><br/>
+</div>
+<p><a href="main_8cpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab91255237b66289306286a88c6a42009">taille_image</a>&#160;&#160;&#160;95</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aeaf5554467dd36885328be3263590fd8">lignes</a>&#160;&#160;&#160;6</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aaa9c2e62572bf353eac6189d7903d4be">colone</a>&#160;&#160;&#160;8</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1c68b7313bb60a43d49f7b0ca34f9b46">largeur_fenetre</a>&#160;&#160;&#160;colone * taille_image</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab27f621be1ef7edc969917453e3b9db6">hauteur_fenetre</a>&#160;&#160;&#160;lignes * taille_image</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac27df7545ae001079dd053dfc3024f07">CASEVIDE</a>&#160;&#160;&#160;1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a220f5e3ccc73cf279b93033390a1da06">casejaune</a>&#160;&#160;&#160;2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afae0ed4e692ae21505dbadbb61892154">caserouge</a>&#160;&#160;&#160;3</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a945a32ec49cddc08daa04610c8aac51a">remplissagecarte</a> (SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone], unsigned char scorejaune, unsigned char scorerouge)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9e5687e7aa854af0db9bb72e5ac1408e">deplacementpionjaune</a> (SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone], unsigned short i, unsigned short j)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a79274083f64b139cf8d4027a6c4519b2">deplacementpionrouge</a> (SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone], unsigned short i, unsigned short j)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af8de1ad1f3a862d7462a982bff91f854">alternancejoueur</a> (unsigned char tour, SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, FSOUND_SAMPLE *pion)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af622b5fa360102b4fed784cf5fccb549">balayage_diagonale_haut_bis</a> (unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone])</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a39c469824f9c5e4db3ddb7ad01202cca">affichage_gagnant</a> (SDL_Surface *ecran, SDL_Surface *petite_fenetre, unsigned char compteur, unsigned char tour, FSOUND_SAMPLE *pion)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#acb93f06a15012da02f01701e946641db">menu</a> (unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone], SDL_Surface *imageDeFond, SDL_Surface *ecran, unsigned char page_acceuil, SDL_Event event, SDL_Rect positionFond)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af87caaeb78108a00223a2b780feadf4c">reinitialisation_des_scores</a> (unsigned char tour, unsigned char scorerouge, unsigned char scorejaune, SDL_Surface *imageDeFond, SDL_Surface *ecran, SDL_Rect positionFond)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3396d3b10461dcbfcc37ca5b5c5d27c0">balayage_lignes</a> (unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone])</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9d8f742c9f57105a59dac1a86346220f">balayage_colones</a> (unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone])</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a63e2305d17a94c0353c0cbdcdaaf9feb">balayage_diagonale_haut</a> (unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[][colone])</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a> [lignes][colone] = {CASEVIDE}</td></tr>
+</table>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="a220f5e3ccc73cf279b93033390a1da06"></a><!-- doxytag: member="main.cpp::casejaune" ref="a220f5e3ccc73cf279b93033390a1da06" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define casejaune&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00013">13</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00482">balayage_colones()</a>, <a class="el" href="main_8cpp_source.html#l00558">balayage_diagonale_haut()</a>, <a class="el" href="main_8cpp_source.html#l00641">balayage_diagonale_haut_bis()</a>, <a class="el" href="main_8cpp_source.html#l00403">balayage_lignes()</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, et <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afae0ed4e692ae21505dbadbb61892154"></a><!-- doxytag: member="main.cpp::caserouge" ref="afae0ed4e692ae21505dbadbb61892154" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define caserouge&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00014">14</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00482">balayage_colones()</a>, <a class="el" href="main_8cpp_source.html#l00558">balayage_diagonale_haut()</a>, <a class="el" href="main_8cpp_source.html#l00641">balayage_diagonale_haut_bis()</a>, <a class="el" href="main_8cpp_source.html#l00403">balayage_lignes()</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, et <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac27df7545ae001079dd053dfc3024f07"></a><!-- doxytag: member="main.cpp::CASEVIDE" ref="ac27df7545ae001079dd053dfc3024f07" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CASEVIDE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00012">12</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa9c2e62572bf353eac6189d7903d4be"></a><!-- doxytag: member="main.cpp::colone" ref="aaa9c2e62572bf353eac6189d7903d4be" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define colone&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00009">9</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab27f621be1ef7edc969917453e3b9db6"></a><!-- doxytag: member="main.cpp::hauteur_fenetre" ref="ab27f621be1ef7edc969917453e3b9db6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define hauteur_fenetre&#160;&#160;&#160;lignes * taille_image</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00011">11</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c68b7313bb60a43d49f7b0ca34f9b46"></a><!-- doxytag: member="main.cpp::largeur_fenetre" ref="a1c68b7313bb60a43d49f7b0ca34f9b46" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define largeur_fenetre&#160;&#160;&#160;colone * taille_image</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00010">10</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeaf5554467dd36885328be3263590fd8"></a><!-- doxytag: member="main.cpp::lignes" ref="aeaf5554467dd36885328be3263590fd8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define lignes&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00008">8</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab91255237b66289306286a88c6a42009"></a><!-- doxytag: member="main.cpp::taille_image" ref="ab91255237b66289306286a88c6a42009" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define taille_image&#160;&#160;&#160;95</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00007">7</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00357">alternancejoueur()</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, <a class="el" href="main_8cpp_source.html#l00033">main()</a>, <a class="el" href="main_8cpp_source.html#l00864">reinitialisation_des_scores()</a>, et <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a39c469824f9c5e4db3ddb7ad01202cca"></a><!-- doxytag: member="main.cpp::affichage_gagnant" ref="a39c469824f9c5e4db3ddb7ad01202cca" args="(SDL_Surface *ecran, SDL_Surface *petite_fenetre, unsigned char compteur, unsigned char tour, FSOUND_SAMPLE *pion)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_gagnant </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>petite_fenetre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>compteur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>tour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FSOUND_SAMPLE *&#160;</td>
+          <td class="paramname"><em>pion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00723">723</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af8de1ad1f3a862d7462a982bff91f854"></a><!-- doxytag: member="main.cpp::alternancejoueur" ref="af8de1ad1f3a862d7462a982bff91f854" args="(unsigned char tour, SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, FSOUND_SAMPLE *pion)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char alternancejoueur </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>tour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FSOUND_SAMPLE *&#160;</td>
+          <td class="paramname"><em>pion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00357">357</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d8f742c9f57105a59dac1a86346220f"></a><!-- doxytag: member="main.cpp::balayage_colones" ref="a9d8f742c9f57105a59dac1a86346220f" args="(unsigned short carte[][colone])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char balayage_colones </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00482">482</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, et <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a63e2305d17a94c0353c0cbdcdaaf9feb"></a><!-- doxytag: member="main.cpp::balayage_diagonale_haut" ref="a63e2305d17a94c0353c0cbdcdaaf9feb" args="(unsigned short carte[][colone])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char balayage_diagonale_haut </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00558">558</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, et <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af622b5fa360102b4fed784cf5fccb549"></a><!-- doxytag: member="main.cpp::balayage_diagonale_haut_bis" ref="af622b5fa360102b4fed784cf5fccb549" args="(unsigned short carte[][colone])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char balayage_diagonale_haut_bis </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00641">641</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, et <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3396d3b10461dcbfcc37ca5b5c5d27c0"></a><!-- doxytag: member="main.cpp::balayage_lignes" ref="a3396d3b10461dcbfcc37ca5b5c5d27c0" args="(unsigned short carte[][colone])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char balayage_lignes </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00403">403</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, et <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e5687e7aa854af0db9bb72e5ac1408e"></a><!-- doxytag: member="main.cpp::deplacementpionjaune" ref="a9e5687e7aa854af0db9bb72e5ac1408e" args="(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short carte[][colone], unsigned short i, unsigned short j)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacementpionjaune </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00326">326</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>, et <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a79274083f64b139cf8d4027a6c4519b2"></a><!-- doxytag: member="main.cpp::deplacementpionrouge" ref="a79274083f64b139cf8d4027a6c4519b2" args="(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short carte[][colone], unsigned short i, unsigned short j)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacementpionrouge </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00291">291</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>, et <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a><!-- doxytag: member="main.cpp::main" ref="ae66f6b31b5ad750f1fe042a706a4e3d4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00033">33</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00723">affichage_gagnant()</a>, <a class="el" href="main_8cpp_source.html#l00357">alternancejoueur()</a>, <a class="el" href="main_8cpp_source.html#l00482">balayage_colones()</a>, <a class="el" href="main_8cpp_source.html#l00558">balayage_diagonale_haut()</a>, <a class="el" href="main_8cpp_source.html#l00641">balayage_diagonale_haut_bis()</a>, <a class="el" href="main_8cpp_source.html#l00403">balayage_lignes()</a>, <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00013">casejaune</a>, <a class="el" href="main_8cpp_source.html#l00014">caserouge</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, <a class="el" href="main_8cpp_source.html#l00011">hauteur_fenetre</a>, <a class="el" href="main_8cpp_source.html#l00010">largeur_fenetre</a>, <a class="el" href="main_8cpp_source.html#l00772">menu()</a>, <a class="el" href="main_8cpp_source.html#l00864">reinitialisation_des_scores()</a>, <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>, et <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acb93f06a15012da02f01701e946641db"></a><!-- doxytag: member="main.cpp::menu" ref="acb93f06a15012da02f01701e946641db" args="(unsigned short carte[][colone], SDL_Surface *imageDeFond, SDL_Surface *ecran, unsigned char page_acceuil, SDL_Event event, SDL_Rect positionFond)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char menu </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>page_acceuil</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00772">772</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af87caaeb78108a00223a2b780feadf4c"></a><!-- doxytag: member="main.cpp::reinitialisation_des_scores" ref="af87caaeb78108a00223a2b780feadf4c" args="(unsigned char tour, unsigned char scorerouge, unsigned char scorejaune, SDL_Surface *imageDeFond, SDL_Surface *ecran, SDL_Rect positionFond)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reinitialisation_des_scores </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>tour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>scorerouge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>scorejaune</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00864">864</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a945a32ec49cddc08daa04610c8aac51a"></a><!-- doxytag: member="main.cpp::remplissagecarte" ref="a945a32ec49cddc08daa04610c8aac51a" args="(SDL_Surface *ecran, SDL_Surface *imageDeFond, SDL_Rect positionFond, unsigned short carte[][colone], unsigned char scorejaune, unsigned char scorerouge)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void remplissagecarte </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>ecran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramname"><em>imageDeFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>positionFond</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>carte</em>[][colone], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>scorejaune</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>scorerouge</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00200">200</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Références <a class="el" href="main_8cpp_source.html#l00021">carte</a>, <a class="el" href="main_8cpp_source.html#l00012">CASEVIDE</a>, <a class="el" href="main_8cpp_source.html#l00009">colone</a>, <a class="el" href="main_8cpp_source.html#l00008">lignes</a>, et <a class="el" href="main_8cpp_source.html#l00007">taille_image</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00033">main()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des variables</h2>
+<a class="anchor" id="ac23b79578d414cdfdc7e4dcac233c1d4"></a><!-- doxytag: member="main.cpp::carte" ref="ac23b79578d414cdfdc7e4dcac233c1d4" args="[lignes][colone]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="main_8cpp.html#ac23b79578d414cdfdc7e4dcac233c1d4">carte</a>[lignes][colone] = {CASEVIDE}</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="main_8cpp_source.html#l00021">21</a> du fichier <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="main_8cpp_source.html#l00482">balayage_colones()</a>, <a class="el" href="main_8cpp_source.html#l00558">balayage_diagonale_haut()</a>, <a class="el" href="main_8cpp_source.html#l00641">balayage_diagonale_haut_bis()</a>, <a class="el" href="main_8cpp_source.html#l00403">balayage_lignes()</a>, <a class="el" href="main_8cpp_source.html#l00326">deplacementpionjaune()</a>, <a class="el" href="main_8cpp_source.html#l00291">deplacementpionrouge()</a>, <a class="el" href="main_8cpp_source.html#l00033">main()</a>, et <a class="el" href="main_8cpp_source.html#l00200">remplissagecarte()</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a>      </li>
+      <li class="footer">Généré le Thu Nov 24 2011 13:12:04 pour PUISSANCE4 par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
+    </ul>
+  </div>
+
+</body>
+</html>
