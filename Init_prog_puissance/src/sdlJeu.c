@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "sdlJeu.h"
 
-const int TAILLE_SPRITE=32;
+const int TAILLE_SPRITE=96;
 
 SDL_Surface *SDL_load_image(const char* filename );
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
@@ -23,14 +23,14 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
-	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
+	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
 	pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
 		pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
-	assert( pSdlJeu->surface_puissance!=NULL);
+    assert( pSdlJeu->surface_puissance!=NULL);
 
 	pSdlJeu->surface_case = SDL_load_image("/data/images/casevide.bmp");
 	if (pSdlJeu->surface_case==NULL)
@@ -48,8 +48,8 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 
 	/* Remplir l'écran de blanc */
-	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0xFF, 0xFF, 0xFF ) );
-
+	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 30, 18, 255 ) );
+    //pSdlJeu->surface_ecran = SDL_LoadBMP("/data/images/acceuil1.bmp");
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
@@ -89,16 +89,16 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				switch ( event.key.keysym.sym )
 				{
 				case SDLK_UP:
-					jeuActionClavier( &(pSdlJeu->jeu), 'h');
+					jeuActionSouris( &(pSdlJeu->jeu), 'h');
 					break;
 				case SDLK_DOWN:
-					jeuActionClavier( &(pSdlJeu->jeu), 'b');
+					jeuActionSouris( &(pSdlJeu->jeu), 'b');
 					break;
 				case SDLK_LEFT:
-					jeuActionClavier( &(pSdlJeu->jeu), 'g');
+					jeuActionSouris( &(pSdlJeu->jeu), 'g');
 					break;
 				case SDLK_RIGHT:
-					jeuActionClavier( &(pSdlJeu->jeu), 'd');
+					jeuActionSouris( &(pSdlJeu->jeu), 'd');
 					break;
 				default: break;
 				}
