@@ -8,12 +8,12 @@ void terInit(Terrain *pTer)
 	int x,y;
 /*  A VOIR PARCEQUE NE FONCTIONNE PAS !!!!!!!!!!!!!!!!!!!! */
 	const char terrain_defaut[6][7]={
-    "..##...",
-	"..##...",
-	"..##...",
-	"..##...",
-	"..##...",
-	"..##..."}; //// je ne sais pas ce qu'il faut mettre !!!!!!
+    "*******",
+	"*******",
+	"*******",
+	"*******",
+	"*******",
+	"*******"}; //// je ne sais pas ce qu'il faut mettre !!!!!!
 
 	pTer->dimx = 6;
 	pTer->dimy = 7;

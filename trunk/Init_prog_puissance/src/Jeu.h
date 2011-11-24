@@ -1,4 +1,3 @@
-
 #ifndef _JEU_H
 #define _JEU_H
 
@@ -21,7 +20,7 @@ typedef struct
 } Jeu;
 
 /**
- * @fn void jeuInit (Jeu    *) ;
+ * @fn void jeuInit (Jeu *) ;
  * @brief Initialise le terrain et  le  jeu.
  *
  * @param[in, out] Pointeur pour initialiser la structure Jeu.
