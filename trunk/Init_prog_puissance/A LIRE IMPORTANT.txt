@@ -1,0 +1,2 @@
+pour travailler sur le projet. j'ai créé un projet SDL avc CodeBlocks dans /src/Jeu_Puissance4/Jeu_Puissance4.cbp
+il faut modifier ce fichier uniquement.
