@@ -15,8 +15,8 @@ void terInit(Terrain *pTer)
 	"#######",
 	"#######"}; //// je ne sais pas ce qu'il faut mettre !!!!!!
 
-	pTer->dimx = 6;
-	pTer->dimy = 7;
+	pTer->dimx = 7;
+	pTer->dimy = 6;  //7
 
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
