@@ -49,7 +49,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 	/* Remplir l'écran de blanc */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 30, 18, 255 ) );
-    //pSdlJeu->surface_ecran = SDL_LoadBMP("/data/images/acceuil1.bmp");
+
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y)
 			if (terGetXY(pTer,x,y)=='#')
@@ -64,11 +64,13 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
+	//SDL_Event event_click;
 	int continue_boucle = 1;
 
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 //omid
+/*
     if( event.type == SDL_MOUSEBUTTONUP )
     {
         //If the left mouse button was released
@@ -77,7 +79,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
             SDL_FreeSurface( pSdlJeu->surface_puissance );
             jeuActionSouris( &(pSdlJeu->jeu), 'h');
         }
-    }
+    }*/
 //omid
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
@@ -88,8 +90,36 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 		while ( SDL_PollEvent( &event ) )
 		{
 			/* Si l'utilisateur a cliqué sur la croix de fermeture */
+            SDL_WaitEvent(&event);
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
+
+           /* if (event.button.button == SDL_BUTTON_LEFT)                                       //si clic gauche //
+            {
+                pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+            if (pSdlJeu->surface_puissance==NULL)
+                pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+            assert( pSdlJeu->surface_puissance!=NULL);
+            }*/
+                                                                             //bibliothèque d'evennement //
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    continue_boucle = 0;                                                     //si on clique sur la croix le prog s'arrete //
+                break;
+
+
+                case SDL_MOUSEBUTTONDOWN:                                                         //Clic de la souris //
+
+                    if (event.button.button == SDL_BUTTON_LEFT)                                       //si clic gauche //
+                    {
+                        pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+                        if (pSdlJeu->surface_puissance==NULL)
+                            pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+                        assert( pSdlJeu->surface_puissance!=NULL);
+                    }
+                break;
+            }
 
 			/* Si l'utilisateur a appuyé sur une touche
 				il faut utiliser sourie a la place de clavier
