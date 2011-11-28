@@ -27,15 +27,15 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
-	pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
+	pSdlJeu->surface_puissance = SDL_load_image("data/images/acceuil1.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
-		pSdlJeu->surface_puissance = SDL_load_image("/data/images/acceuil1.bmp");
+		pSdlJeu->surface_puissance = SDL_load_image("data/images/acceuil1.bmp");
     assert( pSdlJeu->surface_puissance!=NULL);
 
-	pSdlJeu->surface_case = SDL_load_image("/data/images/casevide.bmp");
+	pSdlJeu->surface_case = SDL_load_image("data/images/casevide.bmp");
 	if (pSdlJeu->surface_case==NULL)
-		pSdlJeu->surface_case = SDL_load_image("/data/images/casevide.bmp");
-	//assert( pSdlJeu->surface_case!=NULL);
+		pSdlJeu->surface_case = SDL_load_image("data/images/casevide.bmp");
+	assert( pSdlJeu->surface_case!=NULL);
 }
 
 
