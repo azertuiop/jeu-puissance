@@ -27,10 +27,10 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
-	/*pSdlJeu->surface_puissance = SDL_load_image("acceuil1.bmp");
+	pSdlJeu->surface_puissance = SDL_load_image("acceuil1.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
 		pSdlJeu->surface_puissance = SDL_load_image("acceuil1.bmp");
-    //assert( pSdlJeu->surface_puissance!=NULL);*/
+    assert( pSdlJeu->surface_puissance!=NULL);
 
 	pSdlJeu->surface_case = SDL_load_image("casevide.bmp");
 	if (pSdlJeu->surface_case==NULL)
@@ -68,7 +68,17 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
-
+//omid
+    if( event.type == SDL_MOUSEBUTTONUP )
+    {
+        //If the left mouse button was released
+        if( event.button.button == SDL_BUTTON_LEFT )
+        {
+            SDL_FreeSurface( pSdlJeu->surface_puissance );
+            jeuActionSouris( &(pSdlJeu->jeu), 'h');
+        }
+    }
+//omid
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
 	{
