@@ -64,7 +64,7 @@ $(document).ready(initResizable);
 <a name="l00002"></a>00002 <span class="preprocessor">#include &lt;assert.h&gt;</span>
 <a name="l00003"></a>00003 <span class="preprocessor">#include &quot;<a class="code" href="sdl_jeu_8h.html">sdlJeu.h</a>&quot;</span>
 <a name="l00004"></a>00004 
-<a name="l00005"></a><a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">00005</a> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">TAILLE_SPRITE</a>=32;
+<a name="l00005"></a><a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">00005</a> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">TAILLE_SPRITE</a>=96;
 <a name="l00006"></a>00006 
 <a name="l00007"></a>00007 SDL_Surface *<a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename );
 <a name="l00008"></a>00008 <span class="keywordtype">void</span> <a class="code" href="sdl_jeu_8c.html#a695e055ca801891bb79cc6f68ecbf2ae">SDL_apply_surface</a>( SDL_Surface* source, SDL_Surface* destination, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y );
@@ -85,19 +85,19 @@ $(document).ready(initResizable);
 <a name="l00023"></a>00023         dimy = <a class="code" href="_terrain_8c.html#af3b892a93ee78d81a03111d8b00231fe">getDimY</a>( <a class="code" href="_jeu_8c.html#a41f55d986c33a455e7e5086a13bd5c1e" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstTerrainPtr</a>(pJeu) );
 <a name="l00024"></a>00024         dimx = dimx * <a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">TAILLE_SPRITE</a>;
 <a name="l00025"></a>00025         dimy = dimy * <a class="code" href="sdl_jeu_8c.html#a6c3723683dfe1e0731a0f01ebc2e84f9">TAILLE_SPRITE</a>;
-<a name="l00026"></a>00026         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a> = SDL_SetVideoMode(   dimx, dimy, 32, SDL_SWSURFACE );
+<a name="l00026"></a>00026         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a> = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
 <a name="l00027"></a>00027         assert( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>!=NULL);
 <a name="l00028"></a>00028         SDL_WM_SetCaption( <span class="stringliteral">&quot;Puissance 4&quot;</span>, NULL );
 <a name="l00029"></a>00029 
-<a name="l00030"></a>00030         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;/data/images/acceuil1.bmp&quot;</span>);
+<a name="l00030"></a>00030         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;data/images/acceuil1.bmp&quot;</span>);
 <a name="l00031"></a>00031         <span class="keywordflow">if</span> (pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a>==NULL)
-<a name="l00032"></a>00032                 pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;/data/images/acceuil1.bmp&quot;</span>);
-<a name="l00033"></a>00033         assert( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a>!=NULL);
+<a name="l00032"></a>00032                 pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;data/images/acceuil1.bmp&quot;</span>);
+<a name="l00033"></a>00033     assert( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a81b7fafb7adc0ba9dbddb54d0ef10ee3">surface_puissance</a>!=NULL);
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;/data/images/casevide.bmp&quot;</span>);
+<a name="l00035"></a>00035         pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;data/images/casevide.bmp&quot;</span>);
 <a name="l00036"></a>00036         <span class="keywordflow">if</span> (pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a>==NULL)
-<a name="l00037"></a>00037                 pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;/data/images/casevide.bmp&quot;</span>);
-<a name="l00038"></a>00038         <span class="comment">//assert( pSdlJeu-&gt;surface_case!=NULL);</span>
+<a name="l00037"></a>00037                 pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a> = <a class="code" href="sdl_jeu_8c.html#a20b4d1d7e2f45bbc4d5f5c18fffce8a2">SDL_load_image</a>(<span class="stringliteral">&quot;data/images/casevide.bmp&quot;</span>);
+<a name="l00038"></a>00038         assert( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a8c905614c3c5c031e57b8021a917ad00">surface_case</a>!=NULL);
 <a name="l00039"></a>00039 }
 <a name="l00040"></a>00040 
 <a name="l00041"></a>00041 
@@ -110,8 +110,8 @@ $(document).ready(initResizable);
 <a name="l00048"></a>00048         <span class="keyword">const</span> <a class="code" href="struct_puissance.html">Puissance</a> *pPui = <a class="code" href="_jeu_8c.html#a663710d46b31577b0e6521a1ab7c2738" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstPuissancePtr</a>(&amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>));
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050         <span class="comment">/* Remplir l&#39;�cran de blanc */</span>
-<a name="l00051"></a>00051         SDL_FillRect( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>, &amp;pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>-&gt;clip_rect, SDL_MapRGB( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>-&gt;format, 0xFF, 0xFF, 0xFF ) );
-<a name="l00052"></a>00052 
+<a name="l00051"></a>00051         SDL_FillRect( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>, &amp;pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>-&gt;clip_rect, SDL_MapRGB( pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#af309c208d357ee75a9dd30a4f243e0a9">surface_ecran</a>-&gt;format, 30, 18, 255 ) );
+<a name="l00052"></a>00052     <span class="comment">//pSdlJeu-&gt;surface_ecran = SDL_LoadBMP(&quot;/data/images/acceuil1.bmp&quot;);</span>
 <a name="l00053"></a>00053         <span class="keywordflow">for</span> (x=0;x&lt;<a class="code" href="_terrain_8c.html#a894e796af5dd61fa8e8879d74c4c197b">getDimX</a>(pTer);++x)
 <a name="l00054"></a>00054                 <span class="keywordflow">for</span> (y=0;y&lt;<a class="code" href="_terrain_8c.html#af3b892a93ee78d81a03111d8b00231fe">getDimY</a>(pTer);++y)
 <a name="l00055"></a>00055                         <span class="keywordflow">if</span> (<a class="code" href="_terrain_8c.html#a43e155974fd55979d4eca34f5025bb43">terGetXY</a>(pTer,x,y)==<span class="charliteral">&#39;#&#39;</span>)
@@ -151,16 +151,16 @@ $(document).ready(initResizable);
 <a name="l00089"></a>00089                                 <span class="keywordflow">switch</span> ( event.key.keysym.sym )
 <a name="l00090"></a>00090                                 {
 <a name="l00091"></a>00091                                 <span class="keywordflow">case</span> SDLK_UP:
-<a name="l00092"></a>00092                                         jeuActionClavier( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;h&#39;</span>);
+<a name="l00092"></a>00092                                         <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;h&#39;</span>);
 <a name="l00093"></a>00093                                         <span class="keywordflow">break</span>;
 <a name="l00094"></a>00094                                 <span class="keywordflow">case</span> SDLK_DOWN:
-<a name="l00095"></a>00095                                         jeuActionClavier( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;b&#39;</span>);
+<a name="l00095"></a>00095                                         <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;b&#39;</span>);
 <a name="l00096"></a>00096                                         <span class="keywordflow">break</span>;
 <a name="l00097"></a>00097                                 <span class="keywordflow">case</span> SDLK_LEFT:
-<a name="l00098"></a>00098                                         jeuActionClavier( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;g&#39;</span>);
+<a name="l00098"></a>00098                                         <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;g&#39;</span>);
 <a name="l00099"></a>00099                                         <span class="keywordflow">break</span>;
 <a name="l00100"></a>00100                                 <span class="keywordflow">case</span> SDLK_RIGHT:
-<a name="l00101"></a>00101                                         jeuActionClavier( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;d&#39;</span>);
+<a name="l00101"></a>00101                                         <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>( &amp;(pSdlJeu-&gt;<a class="code" href="structsdl_jeu.html#a43eec470e1819a9df66e019e02928497">jeu</a>), <span class="charliteral">&#39;d&#39;</span>);
 <a name="l00102"></a>00102                                         <span class="keywordflow">break</span>;
 <a name="l00103"></a>00103                                 <span class="keywordflow">default</span>: <span class="keywordflow">break</span>;
 <a name="l00104"></a>00104                                 }
@@ -229,7 +229,7 @@ $(document).ready(initResizable);
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="sdl_jeu_8c.html">sdlJeu.c</a>      </li>
-      <li class="footer">Généré le Thu Nov 24 2011 13:12:04 pour PUISSANCE4 par&#160;
+      <li class="footer">Généré le Mon Nov 28 2011 15:48:14 pour PUISSANCE4 par&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>

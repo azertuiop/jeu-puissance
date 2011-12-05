@@ -60,48 +60,47 @@ $(document).ready(initResizable);
 <div class="title">Jeu.h</div>  </div>
 </div>
 <div class="contents">
-<a href="_jeu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00002"></a>00002 <span class="preprocessor">#ifndef _JEU_H</span>
-<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define _JEU_H</span>
-<a name="l00004"></a>00004 <span class="preprocessor"></span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_puissance_8h.html">Puissance.h</a>&quot;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_terrain_8h.html">Terrain.h</a>&quot;</span>
-<a name="l00007"></a>00007 
-<a name="l00017"></a><a class="code" href="struct_jeu.html">00017</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
-<a name="l00018"></a>00018 {
-<a name="l00019"></a><a class="code" href="struct_jeu.html#a6ef0d2feb24c59b28fe08059057e96ff">00019</a>         <a class="code" href="struct_terrain.html">Terrain</a> <a class="code" href="struct_jeu.html#a6ef0d2feb24c59b28fe08059057e96ff">ter</a>;    
-<a name="l00020"></a><a class="code" href="struct_jeu.html#adc6df5d83946730fdbdaf7f617b8d5a4">00020</a>         <a class="code" href="struct_puissance.html">Puissance</a> <a class="code" href="struct_jeu.html#adc6df5d83946730fdbdaf7f617b8d5a4">pui</a>;  
-<a name="l00021"></a>00021 } <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a>;
-<a name="l00022"></a>00022 
-<a name="l00030"></a>00030 <span class="keywordtype">void</span> <a class="code" href="_jeu_8c.html#adea2de1f9bb9c58341d64db6e20261cc" title="Initialise le terrain et le jeu.">jeuInit</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="comment">/* ************************************************************************ */</span>
-<a name="l00033"></a>00033 <span class="comment">/*           Accesseurs et Mutateurs de la structure Jeu                    */</span>
-<a name="l00034"></a>00034 <span class="comment">/* ************************************************************************ */</span>
-<a name="l00035"></a>00035 
-<a name="l00043"></a>00043 <a class="code" href="struct_terrain.html">Terrain</a> *<a class="code" href="_jeu_8c.html#a5dc9dc669cd4a8792ca94d1365044f1e" title="retourn l&#39;adresse du pointeur de type Terrain pJeu-&gt;ter">jeuGetTerrainPtr</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
-<a name="l00044"></a>00044 
-<a name="l00052"></a>00052 <a class="code" href="struct_puissance.html">Puissance</a> *<a class="code" href="_jeu_8c.html#af2c10e9e5ba34cbfa26d35050973452a" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetPuissancePtr</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
-<a name="l00053"></a>00053 
-<a name="l00061"></a>00061 <span class="keyword">const</span> <a class="code" href="struct_terrain.html">Terrain</a> *<a class="code" href="_jeu_8c.html#a41f55d986c33a455e7e5086a13bd5c1e" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstTerrainPtr</a>(<span class="keyword">const</span> <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
-<a name="l00062"></a>00062 
-<a name="l00070"></a>00070 <span class="keyword">const</span> <a class="code" href="struct_puissance.html">Puissance</a> *<a class="code" href="_jeu_8c.html#a663710d46b31577b0e6521a1ab7c2738" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstPuissancePtr</a>(<span class="keyword">const</span> <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="comment">/* ************************************************************************ */</span>
-<a name="l00073"></a>00073 <span class="comment">/*           Procédure gestion de la souris                                 */</span>
-<a name="l00074"></a>00074 <span class="comment">/* ************************************************************************ */</span>
+<a href="_jeu_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _JEU_H</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _JEU_H</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="_puissance_8h.html">Puissance.h</a>&quot;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_terrain_8h.html">Terrain.h</a>&quot;</span>
+<a name="l00006"></a>00006 
+<a name="l00016"></a><a class="code" href="struct_jeu.html">00016</a> <span class="keyword">typedef</span> <span class="keyword">struct</span>
+<a name="l00017"></a>00017 {
+<a name="l00018"></a><a class="code" href="struct_jeu.html#a6ef0d2feb24c59b28fe08059057e96ff">00018</a>         <a class="code" href="struct_terrain.html">Terrain</a> <a class="code" href="struct_jeu.html#a6ef0d2feb24c59b28fe08059057e96ff">ter</a>;    
+<a name="l00019"></a><a class="code" href="struct_jeu.html#adc6df5d83946730fdbdaf7f617b8d5a4">00019</a>         <a class="code" href="struct_puissance.html">Puissance</a> <a class="code" href="struct_jeu.html#adc6df5d83946730fdbdaf7f617b8d5a4">pui</a>;  
+<a name="l00020"></a>00020 } <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a>;
+<a name="l00021"></a>00021 
+<a name="l00029"></a>00029 <span class="keywordtype">void</span> <a class="code" href="_jeu_8c.html#adea2de1f9bb9c58341d64db6e20261cc" title="Initialise le terrain et le jeu.">jeuInit</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="comment">/* ************************************************************************ */</span>
+<a name="l00032"></a>00032 <span class="comment">/*           Accesseurs et Mutateurs de la structure Jeu                    */</span>
+<a name="l00033"></a>00033 <span class="comment">/* ************************************************************************ */</span>
+<a name="l00034"></a>00034 
+<a name="l00042"></a>00042 <a class="code" href="struct_terrain.html">Terrain</a> *<a class="code" href="_jeu_8c.html#a5dc9dc669cd4a8792ca94d1365044f1e" title="retourn l&#39;adresse du pointeur de type Terrain pJeu-&gt;ter">jeuGetTerrainPtr</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
+<a name="l00043"></a>00043 
+<a name="l00051"></a>00051 <a class="code" href="struct_puissance.html">Puissance</a> *<a class="code" href="_jeu_8c.html#af2c10e9e5ba34cbfa26d35050973452a" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetPuissancePtr</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
+<a name="l00052"></a>00052 
+<a name="l00060"></a>00060 <span class="keyword">const</span> <a class="code" href="struct_terrain.html">Terrain</a> *<a class="code" href="_jeu_8c.html#a41f55d986c33a455e7e5086a13bd5c1e" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstTerrainPtr</a>(<span class="keyword">const</span> <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
+<a name="l00061"></a>00061 
+<a name="l00069"></a>00069 <span class="keyword">const</span> <a class="code" href="struct_puissance.html">Puissance</a> *<a class="code" href="_jeu_8c.html#a663710d46b31577b0e6521a1ab7c2738" title="retourn l&#39;adresse du pointeur de type Puissance pJeu-&gt;ter">jeuGetConstPuissancePtr</a>(<span class="keyword">const</span> <a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="comment">/* ************************************************************************ */</span>
+<a name="l00072"></a>00072 <span class="comment">/*           Procédure gestion de la souris                                 */</span>
+<a name="l00073"></a>00073 <span class="comment">/* ************************************************************************ */</span>
+<a name="l00074"></a>00074 
 <a name="l00075"></a>00075 
-<a name="l00076"></a>00076 
-<a name="l00085"></a>00085 <span class="keywordtype">void</span> <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *j, <span class="keyword">const</span> <span class="keywordtype">char</span>);
+<a name="l00084"></a>00084 <span class="keywordtype">void</span> <a class="code" href="_jeu_8c.html#a0a2cbebc27e18bc1ce0b45cf9f8427b2" title="Gestion de l&#39;utilisation de la souris.">jeuActionSouris</a>(<a class="code" href="struct_jeu.html" title="Structure utilisée pour la gestion du jeu.">Jeu</a> *j, <span class="keyword">const</span> <span class="keywordtype">char</span>);
+<a name="l00085"></a>00085 
 <a name="l00086"></a>00086 
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 <span class="preprocessor">#endif</span>
+<a name="l00087"></a>00087 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="_jeu_8h.html">Jeu.h</a>      </li>
-      <li class="footer">Généré le Thu Nov 24 2011 13:12:04 pour PUISSANCE4 par&#160;
+      <li class="footer">Généré le Mon Nov 28 2011 15:48:14 pour PUISSANCE4 par&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </li>
     </ul>
