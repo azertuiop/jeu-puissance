@@ -12,6 +12,10 @@ typedef struct
 	SDL_Surface* surface_ecran;
 	SDL_Surface* surface_puissance;
 	SDL_Surface* surface_case;
+	SDL_Surface* surface_placement;
+	SDL_Surface* surface_menu_joueur1;
+	SDL_Surface* surface_menu_joueur2;
+	SDL_Surface* surface_joueur1;
 } sdlJeu;
 
 void sdljeuInit(sdlJeu *);

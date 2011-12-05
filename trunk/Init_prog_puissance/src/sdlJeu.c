@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "sdlJeu.h"
 
-const int TAILLE_SPRITE=96;
+const int TAILLE_SPRITE=100;
 
 SDL_Surface *SDL_load_image(const char* filename );
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
@@ -23,19 +23,43 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimy = getDimY( jeuGetConstTerrainPtr(pJeu) );
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
+
 	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
-
+/**     AFFICHAGE ECRAN D'ACCUEIL DU JEU                */
 	pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
 		pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
     assert( pSdlJeu->surface_puissance!=NULL);
-
+/**    AFFICHAGE DE TERRAIN AVEC DES CASES VIDES        */
 	pSdlJeu->surface_case = SDL_load_image("data/images/casevide.bmp");
 	if (pSdlJeu->surface_case==NULL)
 		pSdlJeu->surface_case = SDL_load_image("data/images/casevide.bmp");
 	assert( pSdlJeu->surface_case!=NULL);
+/**    AFFICHAGE ZONE DE PLACEMENT DES PIONS          */
+	pSdlJeu->surface_placement = SDL_load_image("data/images/bidon.bmp");
+	if (pSdlJeu->surface_placement==NULL)
+		pSdlJeu->surface_placement = SDL_load_image("data/images/bidon.bmp");
+	assert( pSdlJeu->surface_placement!=NULL);
+
+/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
+	pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
+	if (pSdlJeu->surface_menu_joueur1==NULL)
+		pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
+	assert( pSdlJeu->surface_menu_joueur1!=NULL);
+
+/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+	pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
+	if (pSdlJeu->surface_menu_joueur2==NULL)
+		pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
+	assert( pSdlJeu->surface_menu_joueur2!=NULL);
+
+	/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+	pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
+	if (pSdlJeu->surface_joueur1==NULL)
+		pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
+	assert( pSdlJeu->surface_joueur1!=NULL);
 }
 
 
@@ -47,14 +71,23 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 
-	/* Remplir l'écran de blanc */
-	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 30, 18, 255 ) );
+	/* Remplir l'écran de bleu */
+	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
+	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
 
 	for (x=0;x<getDimX(pTer);++x)
-		for (y=0;y<getDimY(pTer);++y)
-			if (terGetXY(pTer,x,y)=='#')
+		for (y=0;y<getDimY(pTer);++y){
+			if (terGetXY(pTer,x,y)=='#'){
 				SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-
+               /* printf("x=  %u      y=  %u  \n",x,y);*/
+			}
+            if (terGetXY(pTer,x,y)=='*')
+				SDL_apply_surface(  pSdlJeu->surface_placement, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if (terGetXY(pTer,x,y)=='+')
+				SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if (terGetXY(pTer,x,y)=='-')
+                SDL_apply_surface(  pSdlJeu->surface_menu_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+		}
 	/* Copier le sprite de Pacman sur l'écran */
 	SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
 }
@@ -65,22 +98,11 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
 	//SDL_Event event_click;
-	int continue_boucle = 1;
-
+	int continue_boucle = 1, cpt;
+	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
-//omid
-/*
-    if( event.type == SDL_MOUSEBUTTONUP )
-    {
-        //If the left mouse button was released
-        if( event.button.button == SDL_BUTTON_LEFT )
-        {
-            SDL_FreeSurface( pSdlJeu->surface_puissance );
-            jeuActionSouris( &(pSdlJeu->jeu), 'h');
-        }
-    }*/
-//omid
+
 	/* tant que ce n'est pas la fin ... */
 	while ( continue_boucle == 1 )
 	{
@@ -94,18 +116,11 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-           /* if (event.button.button == SDL_BUTTON_LEFT)                                       //si clic gauche //
-            {
-                pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-            if (pSdlJeu->surface_puissance==NULL)
-                pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-            assert( pSdlJeu->surface_puissance!=NULL);
-            }*/
-                                                                             //bibliothèque d'evennement //
+    //bibliothèque d'evennement //
             switch(event.type)
             {
                 case SDL_QUIT:
-                    continue_boucle = 0;                                                     //si on clique sur la croix le prog s'arrete //
+                    continue_boucle = 0;    //si on clique sur la croix le prog s'arrete //
                 break;
 
 
@@ -117,6 +132,27 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         if (pSdlJeu->surface_puissance==NULL)
                             pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
                         assert( pSdlJeu->surface_puissance!=NULL);
+                        cpt=1;
+                    }
+                    if(cpt==1){
+
+                        int i=puiGetX(pPui);
+                        int j=puiGetY(pPui);
+                       /* int j= event.button.y/100 ; //position du click de la souris dans le tableau//
+                        int i= event.button.x/100; //on recupère la ligne et la colone //*/
+                        printf("valeur i = %u valeur j = %u\n",i,j);
+                        /*testPosition(&pSdlJeu,i,j);*/
+                      /*  int x,y;
+                        for (x=0;x<getDimX(pTer);++x)
+                            for (y=0;y<getDimY(pTer);++y){
+                                if ((terGetXY(pTer,x,y)=='#')&&(x==i)&&(y==j)){*/
+                        SDL_Rect positionFond;
+                        positionFond.x=95;
+                        SDL_BlitSurface(pSdlJeu->surface_joueur1, NULL, pSdlJeu->surface_case, &positionFond);
+                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_ecran, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                        SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
+                           /*     }
+                            }*/
                     }
                 break;
             }
@@ -129,16 +165,16 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				switch ( event.key.keysym.sym )
 				{
 				case SDLK_UP:
-					jeuActionSouris( &(pSdlJeu->jeu), 'h');
+					jeuActionClavier( &(pSdlJeu->jeu), 'z');
 					break;
 				case SDLK_DOWN:
-					jeuActionSouris( &(pSdlJeu->jeu), 'b');
+					jeuActionClavier( &(pSdlJeu->jeu), 's');
 					break;
 				case SDLK_LEFT:
-					jeuActionSouris( &(pSdlJeu->jeu), 'g');
+					jeuActionClavier( &(pSdlJeu->jeu), 'q');
 					break;
 				case SDLK_RIGHT:
-					jeuActionSouris( &(pSdlJeu->jeu), 'd');
+					jeuActionClavier( &(pSdlJeu->jeu), 'd');
 					break;
 				default: break;
 				}
@@ -202,3 +238,8 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 	/* Blit the surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
+/*
+testPosition(sdlJeu *pSdlJeu,int i,int j);
+testPosition(sdlJeu *pSdlJeu,int i,int j){
+
+}*/

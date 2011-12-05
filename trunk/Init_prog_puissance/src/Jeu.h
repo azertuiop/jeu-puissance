@@ -69,19 +69,19 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *);
 const Puissance *jeuGetConstPuissancePtr(const Jeu *);
 
 /* ************************************************************************ */
-/*           Procédure gestion de la souris                                 */
+/*           Procédure gestion de clavier                                    */
 /* ************************************************************************ */
 
 
 /**
- * @fn void jeuActionSouris(Jeu *j, const char);
- * @brief Gestion de l'utilisation de la souris
+ * @fn void jeuActionClavier(Jeu *j, const char);
+ * @brief Gestion de l'utilisation de clavier
  *
  * @param[in, out] Pointeur de la  structure   Jeu.
- * @param[in] Entier pour sauvegarder l'action de la souris.
+ * @param[in] Entier pour sauvegarder l'action de clavier.
  * @return 0 si tout est OK
  */
-void jeuActionSouris(Jeu *j, const char);
+void jeuActionClavier(Jeu *j, const char);
 
 
 #endif

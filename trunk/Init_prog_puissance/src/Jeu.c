@@ -29,20 +29,20 @@ const Puissance *jeuGetConstPuissancePtr(const Jeu *pJeu)
 }
 
 
-void jeuActionSouris(Jeu *pJeu, const char touche) // a adapter pour l'utilisation de la souris
+void jeuActionClavier(Jeu *pJeu, const char touche) // a adapter pour l'utilisation de la souris
 {
 	switch(touche)
 	{
-		case 'g' :
+		case 'q' :
 				puiGauche(&(pJeu->pui), &(pJeu->ter));
 				break;
 		case 'd' :
 				puiDroite(&(pJeu->pui), &(pJeu->ter));
 				break;
-		case 'h' :
+		case 'z' :
 				puiHaut(&(pJeu->pui), &(pJeu->ter));
 				break;
-		case 'b' :
+		case 's' :
 				puiBas(&(pJeu->pui), &(pJeu->ter));
 				break;
 	}
