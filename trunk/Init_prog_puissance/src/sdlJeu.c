@@ -1,7 +1,7 @@
 
 #include <assert.h>
 #include "sdlJeu.h"
-
+void sdljeuAff_jeu(sdlJeu *pSdlJeu,int i, int j);
 const int TAILLE_SPRITE=100;
 
 SDL_Surface *SDL_load_image(const char* filename );
@@ -77,11 +77,11 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y){
-			if (terGetXY(pTer,x,y)=='#'){
+			if (terGetXY(pTer,x,y)=='*'){
 				SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
                /* printf("x=  %u      y=  %u  \n",x,y);*/
 			}
-            if (terGetXY(pTer,x,y)=='*')
+            if (terGetXY(pTer,x,y)=='#')
 				SDL_apply_surface(  pSdlJeu->surface_placement, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if (terGetXY(pTer,x,y)=='+')
 				SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
@@ -99,7 +99,8 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	SDL_Event event;
 	//SDL_Event event_click;
 	int continue_boucle = 1, cpt;
-	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
+/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
+	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));*/
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 
@@ -135,24 +136,20 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         cpt=1;
                     }
                     if(cpt==1){
-
-                        int i=puiGetX(pPui);
+                      /*  SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 0, 0);*/
+                       /* int i=puiGetX(pPui);
                         int j=puiGetY(pPui);
+                        */
+                        int j= event.button.y/100 ; //position du click de la souris dans le tableau//
+                        int i= event.button.x/100;
+                        sdljeuAff_jeu(pSdlJeu,i,j);
                        /* int j= event.button.y/100 ; //position du click de la souris dans le tableau//
                         int i= event.button.x/100; //on recupère la ligne et la colone //*/
                         printf("valeur i = %u valeur j = %u\n",i,j);
-                        /*testPosition(&pSdlJeu,i,j);*/
-                      /*  int x,y;
-                        for (x=0;x<getDimX(pTer);++x)
-                            for (y=0;y<getDimY(pTer);++y){
-                                if ((terGetXY(pTer,x,y)=='#')&&(x==i)&&(y==j)){*/
-                        SDL_Rect positionFond;
-                        positionFond.x=95;
-                        SDL_BlitSurface(pSdlJeu->surface_joueur1, NULL, pSdlJeu->surface_case, &positionFond);
-                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_ecran, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
-                        SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
-                           /*     }
-                            }*/
+/*
+                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE, 3*TAILLE_SPRITE);
+                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE, 3*TAILLE_SPRITE );*/
+
                     }
                 break;
             }
@@ -160,6 +157,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 			/* Si l'utilisateur a appuyé sur une touche
 				il faut utiliser sourie a la place de clavier
 			*/
+			/*
 			if ( event.type == SDL_KEYDOWN )
 			{
 				switch ( event.key.keysym.sym )
@@ -179,6 +177,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 				default: break;
 				}
 			}
+			*/
 
 		}
 
@@ -243,3 +242,28 @@ testPosition(sdlJeu *pSdlJeu,int i,int j);
 testPosition(sdlJeu *pSdlJeu,int i,int j){
 
 }*/
+
+
+void sdljeuAff_jeu(sdlJeu *pSdlJeu, int i, int j)
+{
+	int x,y;
+
+	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
+/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));*/
+
+	/* Remplir l'écran de bleu */
+	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
+	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
+
+	for (x=0;x<getDimX(pTer);++x)
+		for (y=0;y<getDimY(pTer);++y){
+			if ((terGetXY(pTer,x,y)=='*')&&(x==j)&&(y==i)){
+				SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE, 4*TAILLE_SPRITE);
+                printf("x=  %u      y=  %u  \n",i,j);
+
+			}
+		}
+
+    SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE,  4*TAILLE_SPRITE );
+}
+

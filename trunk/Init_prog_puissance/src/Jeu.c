@@ -28,7 +28,7 @@ const Puissance *jeuGetConstPuissancePtr(const Jeu *pJeu)
 	return &(pJeu->pui);
 }
 
-
+/*
 void jeuActionClavier(Jeu *pJeu, const char touche) // a adapter pour l'utilisation de la souris
 {
 	switch(touche)
@@ -47,3 +47,4 @@ void jeuActionClavier(Jeu *pJeu, const char touche) // a adapter pour l'utilisat
 				break;
 	}
 }
+*/
