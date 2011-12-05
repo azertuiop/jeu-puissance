@@ -7,16 +7,17 @@ void terInit(Terrain *pTer)
 {
 	int x,y;
 /*  A VOIR PARCEQUE NE FONCTIONNE PAS !!!!!!!!!!!!!!!!!!!! */
-	const char terrain_defaut[6][7]={
-    "#######",
-	"#######",
-	"#######",
-	"#######",
-	"#######",
-	"#######"}; //// je ne sais pas ce qu'il faut mettre !!!!!!
+	const char terrain_defaut[7][8]={
+    "*******.",
+    "#######.",
+	"#######.",
+	"#######.",
+	"#######+",
+	"#######-",
+	"#######."}; //// je ne sais pas ce qu'il faut mettre !!!!!!
 
-	pTer->dimx = 7;
-	pTer->dimy = 6;
+	pTer->dimx = 8;
+	pTer->dimy = 7;
 
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
