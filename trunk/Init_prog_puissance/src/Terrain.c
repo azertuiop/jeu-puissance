@@ -68,6 +68,15 @@ void terSetXY(const Terrain *pTer, const int x, const int y, const char val)
 	pTer->tab[y][x] = val;
 }
 
+void terModifXY(Terrain *pTer,  int x,  int y,  char foo)
+{
+	assert( x>=0) ;
+	assert( y>=0) ;
+	assert( x<pTer->dimx ) ;
+	assert( y<pTer->dimy ) ;
+	pTer->tab[y][x] = foo;
+}
+
 const int getDimX(const Terrain *pTer)
 {
 	return pTer->dimx;

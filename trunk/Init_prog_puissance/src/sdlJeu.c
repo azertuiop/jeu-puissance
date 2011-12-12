@@ -3,6 +3,7 @@
 #include "sdlJeu.h"
 void sdljeuAff_jeu(sdlJeu *pSdlJeu,int i, int j);
 const int TAILLE_SPRITE=100;
+int tour=0;
 
 SDL_Surface *SDL_load_image(const char* filename );
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
@@ -24,7 +25,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
 
-	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE | SDL_DOUBLEBUF );
+	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE);
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
@@ -57,11 +58,17 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
 	assert( pSdlJeu->surface_menu_joueur2!=NULL);
 
-/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+/**    PION JAUNE      */
 	pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
 	if (pSdlJeu->surface_joueur1==NULL)
 		pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
 	assert( pSdlJeu->surface_joueur1!=NULL);
+
+	/**    PION ROUGE      */
+	pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
+	if (pSdlJeu->surface_joueur2==NULL)
+		pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
+	assert( pSdlJeu->surface_joueur2!=NULL);
 }
 
 
@@ -87,6 +94,11 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 				SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if (terGetXY(pTer,x,y)=='-')
                 SDL_apply_surface(  pSdlJeu->surface_menu_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if (terGetXY(pTer,x,y)=='j')
+                SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if (terGetXY(pTer,x,y)=='r')
+                SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+
 		}
 
 	SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
@@ -97,10 +109,9 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
-	//SDL_Event event_click;
 	int continue_boucle = 1, cpt;
-/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
-	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));*/
+/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));*/
+	Terrain *pTer = jeuGetModifTerrainPtr(&(pSdlJeu->jeu));
 	sdljeuAff(pSdlJeu);
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 
@@ -133,22 +144,32 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         cpt=1;
                     }
                     if(cpt==1){
-                      /*  SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 0, 0);*/
-                       /* int i=puiGetX(pPui);
-                        int j=puiGetY(pPui);
-                        */
+
                         int j= event.button.y/100 ; //position du click de la souris dans le tableau//
                         int i= event.button.x/100;
-                        sdljeuAff_jeu(pSdlJeu,i,j);
-                        SDL_Rect positionFond;
-                       /* int j= event.button.y/100 ; //position du click de la souris dans le tableau//
-                        int i= event.button.x/100; //on recupère la ligne et la colone //*/
                         printf("valeur i = %u valeur j = %u\n",i,j);
-                        positionFond.x = j*TAILLE_SPRITE ;  //position l'image //
-                        positionFond.y = i*TAILLE_SPRITE ;
-                        SDL_BlitSurface(pSdlJeu->surface_joueur1, NULL, pSdlJeu->surface_case, &positionFond);
-/*                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE, 3*TAILLE_SPRITE);
-                        SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE, 3*TAILLE_SPRITE );*/
+                        if((i>=0)&&(i<=6)&&(j>=1)&&(j<=6)){
+
+                            if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')){
+                                printf("\n\nplace occupee\n\n");
+                            }else{
+                                if(tour==1){
+                                    terModifXY(pTer,i,j,'j');
+                                    tour=0;
+                                }
+                                else{
+                                    terModifXY(pTer,i,j,'r');
+                                    tour=1;
+                                }
+                            }
+
+
+                            if (terGetXY(pTer,i,j)=='j')
+                                SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+
+                            if (terGetXY(pTer,i,j)=='r')
+                                SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                        }
 
                     }
                 break;
