@@ -148,18 +148,24 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         int j= event.button.y/100 ; //position du click de la souris dans le tableau//
                         int i= event.button.x/100;
                         printf("valeur i = %u valeur j = %u\n",i,j);
+                        int test=0;
                         if((i>=0)&&(i<=6)&&(j>=1)&&(j<=6)){
+                            for(j=6;j>=1;j--)
+                            {
 
-                            if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')){
+
+                            if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')||(test==1)){
                                 printf("\n\nplace occupee\n\n");
                             }else{
                                 if(tour==1){
                                     terModifXY(pTer,i,j,'j');
                                     tour=0;
+                                    test=1;
                                 }
                                 else{
                                     terModifXY(pTer,i,j,'r');
                                     tour=1;
+                                    test=1;
                                 }
                             }
 
@@ -169,6 +175,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
                             if (terGetXY(pTer,i,j)=='r')
                                 SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                            }
                         }
 
                     }
