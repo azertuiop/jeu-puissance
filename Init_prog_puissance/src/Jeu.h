@@ -59,6 +59,8 @@ Puissance *jeuGetPuissancePtr(Jeu *);
  */
 const Terrain *jeuGetConstTerrainPtr(const Jeu *);
 
+Terrain *jeuGetModifTerrainPtr(Jeu *pJeu);
+
 /**
  * @fn const Puissance *jeuGetConstPuissancePtr(const Jeu *);
  * @brief retourn   l'adresse   du  pointeur de type Puissance pJeu->ter

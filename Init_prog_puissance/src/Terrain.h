@@ -15,5 +15,6 @@ const char terGetXY(const Terrain *, const int x, const int y);
 void terSetXY(const Terrain *, const int x, const int y, const char);
 const int getDimX(const Terrain *);
 const int getDimY(const Terrain *);
+void terModifXY(Terrain *pTer,  int x,  int y,  char foo);
 
 #endif

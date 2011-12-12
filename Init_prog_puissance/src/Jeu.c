@@ -23,6 +23,12 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
+ Terrain *jeuGetModifTerrainPtr( Jeu *pJeu)
+{
+	return &(pJeu->ter);
+}
+
+
 const Puissance *jeuGetConstPuissancePtr(const Jeu *pJeu)
 {
 	return &(pJeu->pui);
