@@ -3,6 +3,8 @@
 #include "sdlJeu.h"
 void sdljeuAff_jeu(sdlJeu *pSdlJeu,int i, int j);
 const int TAILLE_SPRITE=100;
+const int taille_case=100;
+
 int tour=0;
 
 SDL_Surface *SDL_load_image(const char* filename );
@@ -64,7 +66,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
 	assert( pSdlJeu->surface_joueur1!=NULL);
 
-	/**    PION ROUGE      */
+/**    PION ROUGE      */
 	pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
 	if (pSdlJeu->surface_joueur2==NULL)
 		pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
@@ -86,13 +88,11 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y){
-			if (terGetXY(pTer,x,y)=='*')
-				SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-            if (terGetXY(pTer,x,y)=='#')
-				SDL_apply_surface(  pSdlJeu->surface_placement, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-            if (terGetXY(pTer,x,y)=='+')
-				SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-            if (terGetXY(pTer,x,y)=='-')
+		    if((x<=6)&&(y>=1)&&(y<=7))
+                SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==7)&&(y==2))
+                SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==7)&&(y==3))
                 SDL_apply_surface(  pSdlJeu->surface_menu_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if (terGetXY(pTer,x,y)=='j')
                 SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
@@ -109,10 +109,13 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
-	int continue_boucle = 1, cpt;
-/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));*/
+
+	int continue_boucle = 1, StartDetectEven=0;
+
 	Terrain *pTer = jeuGetModifTerrainPtr(&(pSdlJeu->jeu));
+
 	sdljeuAff(pSdlJeu);
+
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 
 	/* tant que ce n'est pas la fin ... */
@@ -121,65 +124,69 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
     /*	ICI , il faut intégré les actions de la sourie (insertion pion)*/
 		while ( SDL_PollEvent( &event ) )
 		{
-            SDL_WaitEvent(&event);
+            //SDL_WaitEvent(&event);
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-    //bibliothèque d'evennement //
+
             switch(event.type)
             {
                 case SDL_QUIT:
                     continue_boucle = 0;    //si on clique sur la croix le prog s'arrete //
                 break;
 
-
-                case SDL_MOUSEBUTTONDOWN:                                                         //Clic de la souris //
-
-                    if (event.button.button == SDL_BUTTON_LEFT)                                       //si clic gauche //
+                case SDL_MOUSEBUTTONDOWN:
+                    if (event.button.button == SDL_BUTTON_LEFT)
                     {
+
                         pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
                         if (pSdlJeu->surface_puissance==NULL)
                             pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
                         assert( pSdlJeu->surface_puissance!=NULL);
-                        cpt=1;
-                    }
-                    if(cpt==1){
+                        sdljeuAff(pSdlJeu);
 
-                        int j= event.button.y/100 ; //position du click de la souris dans le tableau//
-                        int i= event.button.x/100;
+                        StartDetectEven = 1;
+
+                    }
+                    if(StartDetectEven == 1){
+
+                        int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
+                        int i= event.button.x/taille_case;
                         printf("valeur i = %u valeur j = %u\n",i,j);
                         int test=0;
                         if((i>=0)&&(i<=6)&&(j>=1)&&(j<=6)){
-                            for(j=6;j>=1;j--)
+                            for(j=6;j>=1;j--) // limiter le Terrain
                             {
+                                if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')||(test==1)){
 
-
-                            if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')||(test==1)){
-                                printf("\n\nplace occupee\n\n");
-                            }else{
-                                if(tour==1){
-                                    terModifXY(pTer,i,j,'j');
-                                    tour=0;
-                                    test=1;
+                                }else{
+                                    if(tour==1){ //si tour joueur jaune
+                                        terModifXY(pTer,i,j,'j');
+                                        terModifXY(pTer,0,0,'j');
+                                        tour=0;
+                                        test=1;
+                                    }
+                                    else{ //si tour joueur rouge
+                                        terModifXY(pTer,i,j,'r');
+                                        terModifXY(pTer,0,0,'r');
+                                        tour=1;
+                                        test=1;
+                                    }
                                 }
-                                else{
-                                    terModifXY(pTer,i,j,'r');
-                                    tour=1;
-                                    test=1;
-                                }
-                            }
+                                if (terGetXY(pTer,i,j)=='j')
+                                    SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                                    //SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 0*TAILLE_SPRITE, 0*TAILLE_SPRITE);
 
-
-                            if (terGetXY(pTer,i,j)=='j')
-                                SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
-
-                            if (terGetXY(pTer,i,j)=='r')
-                                SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                                if (terGetXY(pTer,i,j)=='r')
+                                    SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                                   // SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, 0*TAILLE_SPRITE, 0*TAILLE_SPRITE);
                             }
                         }
 
                     }
                 break;
+
+
             }
 
 			/* Si l'utilisateur a appuyé sur une touche
@@ -265,21 +272,14 @@ void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, in
 	/* Blit the surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
-/*
-testPosition(sdlJeu *pSdlJeu,int i,int j);
-testPosition(sdlJeu *pSdlJeu,int i,int j){
-
-}*/
-
 
 void sdljeuAff_jeu(sdlJeu *pSdlJeu, int i, int j)
-{
+{/*
 	int x,y;
 
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
-/*	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));*/
+	//const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 
-	/* Remplir l'écran de bleu */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
 	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
 
@@ -293,5 +293,6 @@ void sdljeuAff_jeu(sdlJeu *pSdlJeu, int i, int j)
 		}
 
     SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, 4*TAILLE_SPRITE,  4*TAILLE_SPRITE );
+    */
 }
 

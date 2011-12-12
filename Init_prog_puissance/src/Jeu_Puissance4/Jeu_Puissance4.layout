@@ -7,14 +7,14 @@
 	<File name="../Jeu.h" open="1" top="0" tabpos="8">
 		<Cursor position="1688" topLine="48" />
 	</File>
-	<File name="../Puissance.c" open="1" top="0" tabpos="2">
+	<File name="../Puissance.c" open="1" top="1" tabpos="2">
 		<Cursor position="75" topLine="0" />
 	</File>
 	<File name="../Puissance.h" open="1" top="0" tabpos="1">
 		<Cursor position="423" topLine="0" />
 	</File>
 	<File name="../Terrain.c" open="1" top="0" tabpos="5">
-		<Cursor position="267" topLine="0" />
+		<Cursor position="553" topLine="0" />
 	</File>
 	<File name="../Terrain.h" open="1" top="0" tabpos="6">
 		<Cursor position="435" topLine="0" />
@@ -22,8 +22,8 @@
 	<File name="../main.c" open="1" top="0" tabpos="9">
 		<Cursor position="58" topLine="0" />
 	</File>
-	<File name="../sdlJeu.c" open="1" top="1" tabpos="3">
-		<Cursor position="6111" topLine="136" />
+	<File name="../sdlJeu.c" open="1" top="0" tabpos="3">
+		<Cursor position="5748" topLine="138" />
 	</File>
 	<File name="../sdlJeu.h" open="1" top="0" tabpos="4">
 		<Cursor position="360" topLine="0" />
