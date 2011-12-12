@@ -39,3 +39,9 @@ int puiGetY(const Puissance *pPui)
 {
 	return pPui->y;
 }
+
+void pionJaune(Puissance *, const Terrain *){
+    if (terEstPositionPersoValide( pTer, pPui->x, pPui->y)){
+
+    }
+}
