@@ -32,9 +32,9 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
 /**     AFFICHAGE ECRAN D'ACCUEIL DU JEU                */
-	pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
+	pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
-		pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
+		pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
     assert( pSdlJeu->surface_puissance!=NULL);
 
 /**    AFFICHAGE DE TERRAIN AVEC DES CASES VIDES        */
