@@ -24,8 +24,17 @@ void terInit(Terrain *pTer)
 	for(y=0;y<pTer->dimy;++y)
 		for(x=0;x<pTer->dimx;++x)
 			pTer->tab[y][x] = terrain_defaut[y][x];
+
+
+
 }
 
+void casesInit(Cases cases){
+    cases.xmin=0;
+    cases.xmax=6;
+    cases.ymin=1;
+    cases.ymax=6;
+}
 void terLibere(Terrain *pTer)
 {
 	int y;
@@ -39,12 +48,18 @@ void terLibere(Terrain *pTer)
 	pTer->tab = NULL;
 }
 
-int terEstPositionPersoValide(const Terrain *pTer, const int x, const int y)
-{
-	if (x>=0 && x<pTer->dimx && y>=0 && y<pTer->dimy && pTer->tab[y][x]!='#')
-		return 1;
-	else
-		return 0;
+int terEstPositionPersoValide(const Terrain *pTer,Cases c, const int i, const int j){
+    printf("\nTerrain --> test position valide\n");
+    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
+    printf("    i=%d    j=%d\n",i,j);
+    if( (i>=c.xmin)   &&  (i<=c.xmax)  &&  (j>=c.ymin)   &&  (j<=c.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
+        printf("    test ok\n\n");
+        return 1;
+    }
+    else{
+        printf("    test echoue car case deja utilisee\n\n");
+        return 0;
+    }
 }
 
 
@@ -57,22 +72,14 @@ const char terGetXY(const Terrain *pTer, const int x, const int y)
 	return pTer->tab[y][x];
 }
 
-void terSetXY(const Terrain *pTer, const int x, const int y, const char val)
+void terSetXY(const Terrain *pTer, const int x, const int y, const char pion)
 {
 	assert( x>=0) ;
 	assert( y>=0) ;
 	assert( x<pTer->dimx ) ;
 	assert( y<pTer->dimy ) ;
-	pTer->tab[y][x] = val;
-}
-
-void terModifXY(Terrain *pTer,  int x,  int y,  char foo)
-{
-	assert( x>=0) ;
-	assert( y>=0) ;
-	assert( x<pTer->dimx ) ;
-	assert( y<pTer->dimy ) ;
-	pTer->tab[y][x] = foo;
+	pTer->tab[y][x] = pion;
+	printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
 }
 
 const int getDimX(const Terrain *pTer)
