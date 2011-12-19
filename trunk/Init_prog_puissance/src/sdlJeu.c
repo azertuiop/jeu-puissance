@@ -32,9 +32,9 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
 /**     AFFICHAGE ECRAN D'ACCUEIL DU JEU                */
-	pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
+	pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
 	if (pSdlJeu->surface_puissance==NULL)
-		pSdlJeu->surface_puissance = SDL_load_image("data/images/acc1.bmp");
+		pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
     assert( pSdlJeu->surface_puissance!=NULL);
 
 /**    AFFICHAGE DE TERRAIN AVEC DES CASES VIDES        */
@@ -82,17 +82,18 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 	const Terrain *pTer = jeuGetConstTerrainPtr(&(pSdlJeu->jeu));
 	const Puissance *pPui = jeuGetConstPuissancePtr(&(pSdlJeu->jeu));
 
+
 	/* Remplir l'écran de bleu */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
 	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
 
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y){
-		    if((x<=getDimX(pTer)-2)&&(y>=1)&&(y<=getDimY(pTer)-1))
+		    if((x<=6)&&(y>=1)&&(y<=7))
                 SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-            if((x==getDimX(pTer)-1)&&(y==2))
+            if((x==7)&&(y==2))
                 SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
-            if((x==getDimX(pTer)-1)&&(y==3))
+            if((x==7)&&(y==3))
                 SDL_apply_surface(  pSdlJeu->surface_menu_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if (terGetXY(pTer,x,y)=='j')
                 SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
@@ -110,10 +111,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 {
 	SDL_Event event;
 
-	int continue_boucle = 1, StartDetectEven=0;
+	int continue_boucle = 1, StartDetectEven=0, enter=0;
 
 	Terrain *pTer = jeuGetModifTerrainPtr(&(pSdlJeu->jeu));
-
+    Cases cases = jeuGetConstCasesPtr(&(pSdlJeu->jeu));
 	sdljeuAff(pSdlJeu);
 
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
@@ -135,58 +136,80 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                     continue_boucle = 0;    //si on clique sur la croix le prog s'arrete //
                 break;
 
-                case SDL_MOUSEBUTTONDOWN:
-                    if (event.button.button == SDL_BUTTON_LEFT)
-                    {
-                        if(StartDetectEven==0)
-                        {
+                case SDL_KEYDOWN:
+                    if (event.key.keysym.sym == SDLK_RETURN ){
+                        pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+                        if (pSdlJeu->surface_puissance==NULL)
                             pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-                            if (pSdlJeu->surface_puissance==NULL)
-                            pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-                            assert( pSdlJeu->surface_puissance!=NULL);
-                        }
+                        assert( pSdlJeu->surface_puissance!=NULL);
                         sdljeuAff(pSdlJeu);
+                        printf("----------------->  enter ok\n");
+                        enter=1;
+                        StartDetectEven = 0;
+                    }else enter=0;
+                break;
+
+                case SDL_MOUSEBUTTONDOWN:
+                    if (event.button.button == SDL_BUTTON_LEFT && enter==1){
+                       /* pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+                        if (pSdlJeu->surface_puissance==NULL)
+                            pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
+                        assert( pSdlJeu->surface_puissance!=NULL);
+                        sdljeuAff(pSdlJeu);*/
 
                         StartDetectEven = 1;
-
                     }
-                    if(StartDetectEven == 1){
 
+                    if(StartDetectEven == 1){
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
                         printf("valeur i = %u valeur j = %u\n",i,j);
-                        int test=0;
-                        if((i>=0)&&(i<=getDimX(pTer)-2)&&(j>=1)&&(j<=getDimY(pTer)-1)){
-                            for(j= getDimY(pTer)-1;j>=1;j--) // limiter le Terrain
+/**     */
+                        if(tour==0){
+                            if(pionJauneValide(pTer,cases,i,j)==1){
+                                if (terGetXY(pTer,i,j)=='j'){
+                                    SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                                    tour=1;
+                                        if(balayage(pTer,i,j,'j')==1)
+                                        {
+                                            //StartDetectEven=0;
+                                            //continue_boucle=0;
+                                            printf("jaune est ganiee \n");
+                                        }
+
+                                }
+                            }
+                        }else{
+                            if(pionRougeValide(pTer,cases,i,j)==1){
+                                if (terGetXY(pTer,i,j)=='r'){
+                                    SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
+                                    tour=0;
+                                        if(balayage(pTer,i,j,'r')==1)
+                                        {
+                                            //StartDetectEven=0;
+                                            //continue_boucle=0;
+                                            printf("rouge est ganiee \n");
+                                        }
+                                }
+                            }
+                        }
+
+
+                        /*if((i>=0)&&(i<=6)&&(j>=1)&&(j<=6)){
+                            for(j=6;j>=1;j--) // limiter le Terrain
                             {
                                 if((terGetXY(pTer,i,j)=='j')||(terGetXY(pTer,i,j)=='r')||(test==1)){
 
                                 }else{
                                     if(tour==1){ //si tour joueur jaune
                                         terModifXY(pTer,i,j,'j');
-                                        printf("jaune valeur i = %u valeur j = %u\n",i,j);
-                                        if(balayage(pTer,i,j,'j')==1)
-                                        {
-                                            //StartDetectEven=0;
-                                            //continue_boucle=0;
-                                            printf("ganier\n");
-                                        }
-
-                                        else printf("nnnnnnn \n");
+                                        terModifXY(pTer,0,0,'j');
                                         tour=0;
                                         test=1;
                                     }
                                     else{ //si tour joueur rouge
                                         terModifXY(pTer,i,j,'r');
-                                        printf("rouge valeur i = %u valeur j = %u\n",i,j);
-                                        if(balayage(pTer,i,j,'r')==1)
-                                        {
-                                            //StartDetectEven=0;
-                                            //continue_boucle=0;
-                                            printf("ganier\n");
-                                        }
-
-                                        else printf("nnnnnnn \n");
+                                        terModifXY(pTer,0,0,'r');
                                         tour=1;
                                         test=1;
                                     }
@@ -199,7 +222,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                                     SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
                                    // SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, 0*TAILLE_SPRITE, 0*TAILLE_SPRITE);
                             }
-                        }
+                        }*/
 
                     }
                 break;
