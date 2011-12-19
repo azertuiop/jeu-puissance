@@ -62,5 +62,6 @@ int pionJauneValide(Terrain *, Cases cases, int i, int j);
  */
 int pionRougeValide(Terrain *, Cases cases, int i, int j);
 int balayage(const Terrain *pTer, const int x,const int y,const char val);
+int positionDePion(const Terrain *pTer, Cases cases, const int x, const int y);
 
 #endif
