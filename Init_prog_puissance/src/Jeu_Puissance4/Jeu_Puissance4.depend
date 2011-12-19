@@ -227,21 +227,22 @@
 	"Puissance.h"
 	"Terrain.h"
 
-1323703907 /home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.h
+1323722448 /home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.h
 	"Terrain.h"
 
 1323703907 /home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.h
 
-1323703907 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.c
+1324045923 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.c
+	<stdio.h>
 	"Puissance.h"
 
-1323703907 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.c
+1324045978 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.c
 	"Terrain.h"
 	<stdio.h>
 	<malloc.h>
 	<assert.h>
 
-1323703907 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main.c
+1323715569 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main.c
 	<stdio.h>
 	"sdlJeu.h"
 
@@ -249,7 +250,7 @@
 	<SDL/SDL.h>
 	"Jeu.h"
 
-1323704661 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.c
+1324045148 source:/home/omid/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.c
 	<assert.h>
 	"sdlJeu.h"
 
