@@ -6,7 +6,8 @@
 #include "Jeu.h"
 
 
-typedef struct{
+typedef struct
+{
 	Jeu jeu;
 	SDL_Surface* surface_ecran;
 	SDL_Surface* surface_puissance;

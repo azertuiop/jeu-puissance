@@ -11,14 +11,13 @@
  * Cette structure est utilisée pour gérer le   terrain et  le  jeu.
  Les champs de cette structures doivent être modifiés ou lus
  par les accesseurs et mutateurs.
- Gestion des limites du terrain est traitée aussi
  */
+
 typedef struct
 {
 	Terrain ter;    /**Données  du  terrain*/
 	Puissance pui;  /**Données  du  jeu puissance */
-    Cases cases;    /**Données des dimensions de remplissage du terrain avec des cases  */
-}Jeu;
+} Jeu;
 
 /**
  * @fn void jeuInit (Jeu *) ;
@@ -70,9 +69,6 @@ Terrain *jeuGetModifTerrainPtr(Jeu *pJeu);
  * @return adresse  du  pointeur
  */
 const Puissance *jeuGetConstPuissancePtr(const Jeu *);
-
-
- Cases jeuGetConstCasesPtr( Jeu *pJeu);
 
 /* ************************************************************************ */
 /*           Procédure gestion de clavier                                    */
