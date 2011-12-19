@@ -164,9 +164,13 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
                         printf("valeur i = %u valeur j = %u\n",i,j);
-/**     */
+
+/**     */              j= positionDePion(pTer, cases, i, j);
+                        printf("valeur i = %u valeur j = %u\n",i,j);
+
                         if(tour==0){
                             if(pionJauneValide(pTer,cases,i,j)==1){
+                                printf("i : %d  j : %d \n", i, j);
                                 if (terGetXY(pTer,i,j)=='j'){
                                     SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
                                     tour=1;

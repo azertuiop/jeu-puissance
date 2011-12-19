@@ -63,6 +63,16 @@ int pionRougeValide(Terrain * pTer, Cases cases, int i, int j){
     else return 0;
 }
 
+int positionDePion(const Terrain *pTer, Cases c, const int x, const int y){
+
+    int i;
+    for(i=c.ymax; i>=c.ymin; i--)
+    if (terEstPositionPersoValide(pTer, c, x, i)==1){
+        return i;
+    }
+    return -1;
+}
+
 
 int balayage(const Terrain *pTer, const int x,const int y,const char val)
 {
