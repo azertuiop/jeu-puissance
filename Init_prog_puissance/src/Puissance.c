@@ -70,7 +70,7 @@ int positionDePion(const Terrain *pTer, Cases c, const int x, const int y){
     if (terEstPositionPersoValide(pTer, c, x, i)==1){
         return i;
     }
-    return -1;
+    return 0;
 }
 
 
