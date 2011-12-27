@@ -15,8 +15,6 @@ void terInit(Terrain *pTer)
 //	pTer->dimx = 9;
 //	pTer->dimy = 8;
 
-
-
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
 		pTer->tab[y] = (char *)malloc(sizeof(char)*pTer->dimx);
@@ -49,15 +47,15 @@ void terLibere(Terrain *pTer)
 }
 
 int terEstPositionPersoValide(const Terrain *pTer,Cases c, const int i, const int j){
-    printf("\nTerrain --> test position valide\n");
-    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
-    printf("    i=%d    j=%d\n",i,j);
+    //printf("\nTerrain --> test position valide\n");
+    //printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
+    //printf("    i=%d    j=%d\n",i,j);
     if( (i>=c.xmin)   &&  (i<=c.xmax)  &&  (j>=c.ymin)   &&  (j<=c.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
-        printf("    test ok\n\n");
+        //printf("    test ok\n\n");
         return 1;
     }
     else{
-        printf("    test echoue car case deja utilisee\n\n");
+        //printf("    test echoue car case deja utilisee\n\n");
         return 0;
     }
 }
@@ -79,7 +77,7 @@ void terSetXY(const Terrain *pTer, const int x, const int y, const char pion)
 	assert( x<pTer->dimx ) ;
 	assert( y<pTer->dimy ) ;
 	pTer->tab[y][x] = pion;
-	printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
+	//printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
 }
 
 const int getDimX(const Terrain *pTer)
