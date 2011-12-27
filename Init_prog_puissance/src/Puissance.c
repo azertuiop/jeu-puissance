@@ -1,5 +1,6 @@
 #include "Puissance.h"
 #include <stdio.h>
+#include <assert.h>
 
 void puiInit(Puissance *pPui)
 {
@@ -42,7 +43,7 @@ int puiGetY(const Puissance *pPui)
 
 int pionJauneValide(Terrain * pTer, Cases cases, int i, int j)
 {
-    printf("\nPuissance-->debut test emplacement jaune\n");
+   // printf("\nPuissance-->debut test emplacement jaune\n");
     if (terEstPositionPersoValide(pTer,cases, i,j)==1){
         terSetXY(pTer,i,j,'j');
 
@@ -54,7 +55,7 @@ int pionJauneValide(Terrain * pTer, Cases cases, int i, int j)
 
 int pionRougeValide(Terrain * pTer, Cases cases, int i, int j){
 
-    printf("\nPuissance-->debut test emplacement rouge\n");
+    //printf("\nPuissance-->debut test emplacement rouge\n");
     if (terEstPositionPersoValide(pTer,cases, i,j)==1){
         terSetXY(pTer,i,j,'r');
 
@@ -191,6 +192,3 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
     return 0;
 
 }
-
-
-

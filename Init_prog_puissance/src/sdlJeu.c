@@ -27,7 +27,7 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	dimx = dimx * TAILLE_SPRITE;
 	dimy = dimy * TAILLE_SPRITE;
 
-	pSdlJeu->surface_ecran = SDL_SetVideoMode(   dimx, dimy, 32, SDL_HWSURFACE);
+	pSdlJeu->surface_ecran = SDL_SetVideoMode(dimx, dimy, 32, SDL_HWSURFACE);
 	assert( pSdlJeu->surface_ecran!=NULL);
 	SDL_WM_SetCaption( "Puissance 4", NULL );
 
@@ -71,6 +71,13 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->surface_joueur2==NULL)
 		pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
 	assert( pSdlJeu->surface_joueur2!=NULL);
+
+/**    MENU EXIT        */
+    pSdlJeu->surface_exit= SDL_load_image("data/images/exit.bmp");
+	if (pSdlJeu->surface_exit==NULL)
+		pSdlJeu->surface_exit = SDL_load_image("data/images/exit.bmp");
+	assert( pSdlJeu->surface_exit!=NULL);
+
 }
 
 
@@ -85,12 +92,19 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 	/* Remplir l'écran de bleu */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
-	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
+	//SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );
 
 	for (x=0;x<getDimX(pTer);++x)
 		for (y=0;y<getDimY(pTer);++y){
+
+		    if((x==0)&&(y==0)&&(tour==0))
+                SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_puissance, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==0)&&(y==0)&&(tour==1))
+                SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_puissance, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 		    if((x<=6)&&(y>=1)&&(y<=7))
                 SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==7)&&(y==1))
+                SDL_apply_surface(  pSdlJeu->surface_exit, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if((x==7)&&(y==2))
                 SDL_apply_surface(  pSdlJeu->surface_menu_joueur1, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if((x==7)&&(y==3))
@@ -101,7 +115,6 @@ void sdljeuAff(sdlJeu *pSdlJeu)
                 SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 
 		}
-
 	SDL_apply_surface(  pSdlJeu->surface_puissance, pSdlJeu->surface_ecran, puiGetX(pPui)*TAILLE_SPRITE,  puiGetY(pPui)*TAILLE_SPRITE );
 }
 
@@ -120,18 +133,14 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 	assert( SDL_Flip( pSdlJeu->surface_ecran )!=-1 );
 
 	/* tant que ce n'est pas la fin ... */
-	while ( continue_boucle == 1 )
-	{
+	while ( continue_boucle == 1 ){
     /*	ICI , il faut intégré les actions de la sourie (insertion pion)*/
-		while ( SDL_PollEvent( &event ) )
-		{
+		while ( SDL_PollEvent( &event ) ){
             //SDL_WaitEvent(&event);
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-
-            switch(event.type)
-            {
+            switch(event.type){
                 case SDL_QUIT:
                     continue_boucle = 0;    //si on clique sur la croix le prog s'arrete //
                 break;
@@ -144,6 +153,10 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         assert( pSdlJeu->surface_puissance!=NULL);
                         sdljeuAff(pSdlJeu);
                         printf("----------------->  enter ok\n");
+                      //  setMENUexit(pTer,7,1);
+                        printf("init ok");
+                       //     SDL_apply_surface(  pSdlJeu->surface_exit, pSdlJeu->surface_case, 1*TAILLE_SPRITE, 7*TAILLE_SPRITE);
+
                         enter=1;
                         StartDetectEven = 0;
                     }else enter=0;
@@ -151,36 +164,34 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
                 case SDL_MOUSEBUTTONDOWN:
                     if (event.button.button == SDL_BUTTON_LEFT && enter==1){
-                       /* pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-                        if (pSdlJeu->surface_puissance==NULL)
-                            pSdlJeu->surface_puissance = SDL_load_image("data/images/casevide.bmp");
-                        assert( pSdlJeu->surface_puissance!=NULL);
-                        sdljeuAff(pSdlJeu);*/
-
                         StartDetectEven = 1;
                     }
 
                     if(StartDetectEven == 1){
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
-                        printf("valeur i = %u valeur j = %u\n",i,j);
+                        //printf("valeur i = %u valeur j = %u\n",i,j);
+                        if((i==7)&&(j==1))  continue_boucle = 0;
 
-/**     */              j= positionDePion(pTer, cases, i, j);
-                        printf("valeur i = %u valeur j = %u\n",i,j);
+                        j= positionDePion(pTer, cases, i, j);
+                        //printf("valeur i = %u valeur j = %u\n",i,j);
 
                         if(tour==0){
                             if(pionJauneValide(pTer,cases,i,j)==1){
-                                printf("i : %d  j : %d \n", i, j);
+                                //printf("i : %d  j : %d \n", i, j);
                                 if (terGetXY(pTer,i,j)=='j'){
                                     SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
-                                    tour=1;
-                                        if(balayage(pTer,i,j,'j')==1)
-                                        {
-                                            //StartDetectEven=0;
-                                            //continue_boucle=0;
-                                            printf("jaune est ganiee \n");
-                                        }
 
+                                    tour=1;
+                                    if(balayage(pTer,i,j,'j')==1)
+                                    {
+                                        //StartDetectEven=0;
+                                        //continue_boucle=0;
+                                        printf("jaune gagnant \n");
+                                        terLibere(pTer);
+                                        printf("\nterrain libre\n");
+                                        terInit(pTer);
+                                    }
                                 }
                             }
                         }else{
@@ -188,12 +199,15 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                                 if (terGetXY(pTer,i,j)=='r'){
                                     SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
                                     tour=0;
-                                        if(balayage(pTer,i,j,'r')==1)
-                                        {
-                                            //StartDetectEven=0;
-                                            //continue_boucle=0;
-                                            printf("rouge est ganiee \n");
-                                        }
+                                    if(balayage(pTer,i,j,'r')==1)
+                                    {
+                                        //StartDetectEven=0;
+                                        //continue_boucle=0;
+                                        printf("rouge gagnant \n");
+                                        terLibere(pTer);
+                                        printf("\nterrain libre\n");
+                                        terInit(pTer);
+                                    }
                                 }
                             }
                         }
@@ -230,34 +244,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 
                     }
                 break;
-
-
             }
-
-			/* Si l'utilisateur a appuyé sur une touche
-				il faut utiliser sourie a la place de clavier
-			*/
-			/*
-			if ( event.type == SDL_KEYDOWN )
-			{
-				switch ( event.key.keysym.sym )
-				{
-				case SDLK_UP:
-					jeuActionClavier( &(pSdlJeu->jeu), 'z');
-					break;
-				case SDLK_DOWN:
-					jeuActionClavier( &(pSdlJeu->jeu), 's');
-					break;
-				case SDLK_LEFT:
-					jeuActionClavier( &(pSdlJeu->jeu), 'q');
-					break;
-				case SDLK_RIGHT:
-					jeuActionClavier( &(pSdlJeu->jeu), 'd');
-					break;
-				default: break;
-				}
-			}
-			*/
 
 		}
 
@@ -274,6 +261,13 @@ void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
 	SDL_FreeSurface( pSdlJeu->surface_puissance );
 	SDL_FreeSurface( pSdlJeu->surface_case );
+
+	SDL_FreeSurface( pSdlJeu->surface_placement );
+	SDL_FreeSurface( pSdlJeu->surface_menu_joueur1 );
+	SDL_FreeSurface( pSdlJeu->surface_menu_joueur2 );
+	SDL_FreeSurface( pSdlJeu->surface_joueur1 );
+	SDL_FreeSurface( pSdlJeu->surface_joueur2 );
+
 	SDL_Quit();
 }
 
