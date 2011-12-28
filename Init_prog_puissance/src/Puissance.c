@@ -1,6 +1,5 @@
 #include "Puissance.h"
 #include <stdio.h>
-#include <assert.h>
 
 void puiInit(Puissance *pPui)
 {
@@ -41,10 +40,10 @@ int puiGetY(const Puissance *pPui)
 	return pPui->y;
 }
 
-int pionJauneValide(Terrain * pTer, Cases cases, int i, int j)
+int pionJauneValide(Terrain * pTer, int i, int j)
 {
-   // printf("\nPuissance-->debut test emplacement jaune\n");
-    if (terEstPositionPersoValide(pTer,cases, i,j)==1){
+    printf("\nPuissance-->debut test emplacement jaune\n");
+    if (terEstPositionPersoValide(pTer, i, j)==1){
         terSetXY(pTer,i,j,'j');
 
         return 1;
@@ -53,10 +52,10 @@ int pionJauneValide(Terrain * pTer, Cases cases, int i, int j)
 }
 
 
-int pionRougeValide(Terrain * pTer, Cases cases, int i, int j){
+int pionRougeValide(Terrain * pTer, int i, int j){
 
-    //printf("\nPuissance-->debut test emplacement rouge\n");
-    if (terEstPositionPersoValide(pTer,cases, i,j)==1){
+    printf("\nPuissance-->debut test emplacement rouge\n");
+    if (terEstPositionPersoValide(pTer, i,j)==1){
         terSetXY(pTer,i,j,'r');
 
         return 1;
@@ -64,11 +63,12 @@ int pionRougeValide(Terrain * pTer, Cases cases, int i, int j){
     else return 0;
 }
 
-int positionDePion(const Terrain *pTer, Cases c, const int x, const int y){
+int positionDePion(const Terrain *pTer, const int x, const int y){
 
     int i;
-    for(i=c.ymax; i>=c.ymin; i--)
-    if (terEstPositionPersoValide(pTer, c, x, i)==1){
+//    for(i=c.ymax; i>=c.ymin; i--)
+    for(i=pTer->cases.ymax; i>=1; i--)
+    if (terEstPositionPersoValide(pTer, x, i)==1){
         return i;
     }
     return 0;
@@ -192,3 +192,6 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
     return 0;
 
 }
+
+
+

@@ -3,12 +3,9 @@
 
 #include "sdlJeu.h"
 
-
-
 int main ( int argc, char** argv )
 {
-
-	sdlJeu sj;
+    sdlJeu sj;
 	sdljeuInit( &sj );
 	sdljeuBoucle( &sj );
 	sdljeuDetruit( &sj );

@@ -4,6 +4,7 @@
 #include "Puissance.h"
 #include "Terrain.h"
 
+
 /**
  * @struct Jeu
  * @brief Structure utilisée pour la gestion du jeu.
@@ -17,7 +18,7 @@ typedef struct
 {
 	Terrain ter;    /**Données  du  terrain*/
 	Puissance pui;  /**Données  du  jeu puissance */
-    Cases cases;    /**Données des dimensions de remplissage du terrain avec des cases  */
+/*	Joueur jou;*/
 }Jeu;
 
 /**
@@ -89,5 +90,5 @@ const Puissance *jeuGetConstPuissancePtr(const Jeu *);
  */
 void jeuActionClavier(Jeu *j, const char);
 
-
+/*Joueur *jeuGetJoueurPtr(Jeu *);*/
 #endif
