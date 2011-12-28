@@ -40,36 +40,31 @@ void sdljeuInit(sdlJeu *pSdlJeu)
     switch(jeuContinu)
     {
         case 0:
-        {
             pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
             if (pSdlJeu->surface_puissance==NULL)
                 pSdlJeu->surface_puissance = SDL_load_image("data/images/acc3.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
-        }
         break;
+
         case 1:
-        {
             pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantrouge.bmp");
             if (pSdlJeu->surface_puissance==NULL)
                 pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantrouge.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
-        }
         break;
+
         case 2:
-        {
             pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune.bmp");
             if (pSdlJeu->surface_puissance==NULL)
                 pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
-        }
         break;
+
         case 3:
-        {
             pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
             if (pSdlJeu->surface_puissance==NULL)
                 pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
-        }
         break;
     }
 
@@ -86,16 +81,16 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	assert( pSdlJeu->surface_placement!=NULL);
 
 /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
-	/*pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
+	pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
 	if (pSdlJeu->surface_menu_joueur1==NULL)
 		pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
 	assert( pSdlJeu->surface_menu_joueur1!=NULL);
-*/
+
 /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
-/*	pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
+	pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
 	if (pSdlJeu->surface_menu_joueur2==NULL)
 		pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
-	assert( pSdlJeu->surface_menu_joueur2!=NULL);*/
+	assert( pSdlJeu->surface_menu_joueur2!=NULL);
 //    sdljeuscore(pSdlJeu,'j',0);
 //    sdljeuscore(pSdlJeu,'r',0);
 /**    PION JAUNE      */
