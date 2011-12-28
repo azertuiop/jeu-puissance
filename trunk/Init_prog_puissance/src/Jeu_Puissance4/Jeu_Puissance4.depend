@@ -185,39 +185,38 @@
 	"begin_code.h"
 	"close_code.h"
 
-1325010452 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.c
+1325096223 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.c
 	"Puissance.h"
 	<stdio.h>
-	<assert.h>
 
-1325011614 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.h
+1325096223 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.h
 	"Terrain.h"
 
-1324308447 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.h
+1325096223 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.h
 
-1325009983 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.c
+1325096223 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.c
 	"Terrain.h"
 	<stdio.h>
 	<malloc.h>
 	<assert.h>
 
-1324308447 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.c
+1325096223 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.c
 	<stdio.h>
 	"Jeu.h"
 
-1324308447 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.h
+1325096223 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.h
 	"Puissance.h"
 	"Terrain.h"
 
-1322053972 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main.c
+1325096223 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main.c
 	<stdio.h>
 	"sdlJeu.h"
 
-1325008692 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.h
+1325096223 /home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.h
 	<SDL/SDL.h>
 	"Jeu.h"
 
-1325011422 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.c
+1325097284 source:/home/the-king/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.c
 	<assert.h>
 	"sdlJeu.h"
 
