@@ -1,17 +1,5 @@
 #ifndef _TERRAIN_H
 #define _TERRAIN_H
-/**
- * @struct Terrain
- * @brief Structure utilisée pour la gestion du Terrain globale.
- *
- * Cette structure est utilisée dans la construction du Terrain
- du jeu avec les dimensions x et y
- */
-typedef struct{
-	int dimx; /**Données de dimension X*/
-	int dimy; /**Données de dimension Y*/
-	char **tab; /**Pointeur utilisé dans la construction du Terrain avec dimx et dimy*/
-} Terrain;
 
 /**
  * @struct Cases
@@ -27,6 +15,23 @@ typedef struct{
     int ymax; /**Données de Y max*/
 }Cases;
 
+
+/**
+ * @struct Terrain
+ * @brief Structure utilisée pour la gestion du Terrain globale.
+ *
+ * Cette structure est utilisée dans la construction du Terrain
+ du jeu avec les dimensions x et y
+ */
+typedef struct{
+	int dimx; /**Données de dimension X*/
+	int dimy; /**Données de dimension Y*/
+	Cases cases;
+	char **tab; /**Pointeur utilisé dans la construction du Terrain avec dimx et dimy*/
+} Terrain;
+
+
+
 /**
  * @fn void terInit(Terrain *);
  * @brief Initialise le terrain .
@@ -36,14 +41,7 @@ typedef struct{
  */
 void terInit(Terrain *);
 
-/**
- * @fn void casesInit(Cases );
- * @brief Initialise les dimensions de remplissage du terrain.
- *
- * @param[in, out] Pointeur Cases pour initialiser les dimensions.
- * @return 0 si tout est OK
- */
-void casesInit(Cases );
+
 
 /**
  * @fn void terLibere(Terrain *);
@@ -62,7 +60,7 @@ void terLibere(Terrain *);
  * @param[in, out] Pointeur de type Terrain et Cases, les coordonnées de la case selectionnée.
  * @return 1 si tout est OK
  */
-int terEstPositionPersoValide(const Terrain *, Cases , const int , const int );
+int terEstPositionPersoValide(const Terrain *, const int , const int );
 
 /**
  * @fn const char terGetXY(const Terrain *, const int x, const int y);
@@ -99,6 +97,5 @@ const int getDimX(const Terrain *);
  * @return la valeur de dimy
  */
 const int getDimY(const Terrain *);
-
 
 #endif

@@ -4,6 +4,7 @@
 #include "Terrain.h"
 
 
+
 /**
  * @fn struct Puissance
  * @brief Gestion des coordonnées x et y
@@ -51,7 +52,7 @@ int puiGetY(const Puissance *);
  * @param[in, out] Pointeur Terrain, coordonnées du pointeur de la sourie
  * @return 1 si tout est OK
  */
-int pionJauneValide(Terrain *, Cases cases, int i, int j);
+int pionJauneValide(Terrain *, int i, int j);
 
 /**
  * @fn int pionRougeValide(Terrain *, Cases cases, int i, int j);
@@ -60,11 +61,8 @@ int pionJauneValide(Terrain *, Cases cases, int i, int j);
  * @param[in, out] Pointeur Terrain, coordonnées du pointeur de la sourie
  * @return 1 si tout est OK
  */
-int pionRougeValide(Terrain *, Cases cases, int i, int j);
-
+int pionRougeValide(Terrain *, int i, int j);
 int balayage(const Terrain *pTer, const int x,const int y,const char val);
-
-int positionDePion(const Terrain *pTer, Cases cases, const int x, const int y);
-
+int positionDePion(const Terrain *pTer, const int x, const int y);
 
 #endif

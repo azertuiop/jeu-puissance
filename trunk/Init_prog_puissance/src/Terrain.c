@@ -8,12 +8,18 @@ void terInit(Terrain *pTer)
 	int x,y;
 
 	const char terrain_defaut[7][8]={};
-//	const char terrain_defaut[8][9]={};
+//	const char terrain_defaut[11][10]={};
 
 	pTer->dimx = 8;
 	pTer->dimy = 7;
-//	pTer->dimx = 9;
-//	pTer->dimy = 8;
+//	pTer->dimx = 11;
+//	pTer->dimy = 10;
+	pTer->cases.xmin=0;
+	pTer->cases.xmax=pTer->dimx-2;
+	pTer->cases.ymin=1;
+	pTer->cases.ymax=pTer->dimy-1;
+
+
 
 	pTer->tab = (char **)malloc(sizeof(char *)*pTer->dimy);
 	for (y=0; y<pTer->dimy; y++)
@@ -27,12 +33,7 @@ void terInit(Terrain *pTer)
 
 }
 
-void casesInit(Cases cases){
-    cases.xmin=0;
-    cases.xmax=6;
-    cases.ymin=1;
-    cases.ymax=6;
-}
+
 void terLibere(Terrain *pTer)
 {
 	int y;
@@ -46,16 +47,16 @@ void terLibere(Terrain *pTer)
 	pTer->tab = NULL;
 }
 
-int terEstPositionPersoValide(const Terrain *pTer,Cases c, const int i, const int j){
-    //printf("\nTerrain --> test position valide\n");
-    //printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
-    //printf("    i=%d    j=%d\n",i,j);
-    if( (i>=c.xmin)   &&  (i<=c.xmax)  &&  (j>=c.ymin)   &&  (j<=c.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
-        //printf("    test ok\n\n");
+int terEstPositionPersoValide(const Terrain *pTer, const int i, const int j){
+    printf("\nTerrain --> test position valide\n");
+    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
+    printf("    i=%d    j=%d\n",i,j);
+    if( (i>=pTer->cases.xmin)   &&  (i<=pTer->cases.xmax)  &&  (j>=pTer->cases.ymin)   &&  (j<=pTer->cases.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
+        printf("    test ok\n\n");
         return 1;
     }
     else{
-        //printf("    test echoue car case deja utilisee\n\n");
+        printf("    test echoue car case deja utilisee\n\n");
         return 0;
     }
 }
@@ -77,7 +78,7 @@ void terSetXY(const Terrain *pTer, const int x, const int y, const char pion)
 	assert( x<pTer->dimx ) ;
 	assert( y<pTer->dimy ) ;
 	pTer->tab[y][x] = pion;
-	//printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
+	printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
 }
 
 const int getDimX(const Terrain *pTer)
@@ -89,3 +90,4 @@ const int getDimY(const Terrain *pTer)
 {
 	return pTer->dimy;
 }
+

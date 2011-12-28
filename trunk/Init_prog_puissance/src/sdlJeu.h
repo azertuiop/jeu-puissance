@@ -16,12 +16,14 @@ typedef struct{
 	SDL_Surface* surface_menu_joueur2;
 	SDL_Surface* surface_joueur1;
 	SDL_Surface* surface_joueur2;
-	SDL_Surface* surface_exit;
 } sdlJeu;
 
 void sdljeuInit(sdlJeu *);
 void sdljeuBoucle(sdlJeu *);
 void sdljeuLibere(sdlJeu *);
 void sdljeuDetruit(sdlJeu *);
+void sdljeuscore(sdlJeu *, const char,const int);
+void sdljeutour(sdlJeu *);
+void sdljeuRecommence(sdlJeu *,const int jeuContinu, const int enter, const char);
 
 #endif
