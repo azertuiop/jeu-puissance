@@ -10,7 +10,7 @@
 	<File name="../Puissance.c" open="1" top="0" tabpos="2">
 		<Cursor position="3573" topLine="158" />
 	</File>
-	<File name="../Puissance.h" open="1" top="0" tabpos="1">
+	<File name="../Puissance.h" open="1" top="1" tabpos="1">
 		<Cursor position="775" topLine="34" />
 	</File>
 	<File name="../Terrain.c" open="1" top="0" tabpos="5">
@@ -22,10 +22,10 @@
 	<File name="../main.c" open="1" top="0" tabpos="9">
 		<Cursor position="150" topLine="0" />
 	</File>
-	<File name="../sdlJeu.c" open="1" top="1" tabpos="3">
-		<Cursor position="6808" topLine="11" />
+	<File name="../sdlJeu.c" open="1" top="0" tabpos="3">
+		<Cursor position="40" topLine="0" />
 	</File>
 	<File name="../sdlJeu.h" open="1" top="0" tabpos="4">
-		<Cursor position="388" topLine="0" />
+		<Cursor position="388" topLine="3" />
 	</File>
 </CodeBlocks_layout_file>

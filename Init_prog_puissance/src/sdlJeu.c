@@ -1,7 +1,6 @@
 
 #include <assert.h>
 #include "sdlJeu.h"
-#include "Joueur.h"
 
 void sdljeuAff_jeu(sdlJeu *pSdlJeu,int i, int j);
 const int TAILLE_SPRITE=100;
