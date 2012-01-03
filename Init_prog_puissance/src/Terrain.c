@@ -29,8 +29,6 @@ void terInit(Terrain *pTer)
 		for(x=0;x<pTer->dimx;++x)
 			pTer->tab[y][x] = terrain_defaut[y][x];
 
-
-
 }
 
 

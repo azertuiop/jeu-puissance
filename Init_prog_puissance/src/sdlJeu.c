@@ -15,8 +15,6 @@ int scoreJoueurR=0;
 SDL_Surface *SDL_load_image(const char* filename );
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
 
-
-
 void sdljeuInit(sdlJeu *pSdlJeu)
 {
 	Jeu *pJeu;
@@ -104,6 +102,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->surface_joueur2==NULL)
 		pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
 	assert( pSdlJeu->surface_joueur2!=NULL);
+
+	/**    Menu Exit      */
+	pSdlJeu->surface_exit = SDL_load_image("data/images/exit.bmp");
+	if (pSdlJeu->surface_exit==NULL)
+		pSdlJeu->surface_exit = SDL_load_image("data/images/exit.bmp");
+	assert( pSdlJeu->surface_exit!=NULL);
 }
 
 
@@ -124,6 +128,8 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 		{
             if((x==0)&&(y==0))
                 SDL_apply_surface(  pSdlJeu->surface_placement, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==7)&&(y==1))
+                SDL_apply_surface(  pSdlJeu->surface_exit, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 		    if((x<=getDimX(pTer)-2)&&(y>=1)&&(y<=getDimY(pTer)-1))
                 SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if((x==getDimX(pTer)-1)&&(y==2))
@@ -200,6 +206,9 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
                         printf("valeur i = %u valeur j = %u\n",i,j);
+
+                        if(i==7 && j==1)
+                            continue_boucle = 0;
 
 /**     */              j= positionDePion(pTer, i, j);
                         printf("valeur i = %u valeur j = %u\n",i,j);
