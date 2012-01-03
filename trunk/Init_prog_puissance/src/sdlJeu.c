@@ -58,12 +58,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
             assert( pSdlJeu->surface_puissance!=NULL);
         break;
 
-        case 3:
+       /* case 3:
             pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
             if (pSdlJeu->surface_puissance==NULL)
                 pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
-        break;
+        break;*/
     }
 
 
@@ -205,17 +205,17 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                     if(StartDetectEven == 1){
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
-                        printf("valeur i = %u valeur j = %u\n",i,j);
+                      //  printf("valeur i = %u valeur j = %u\n",i,j);
 
-                        if(i==7 && j==1)
+                        if(i==7 && j==1) // si appuie sur EXIT, on ferme le jeu
                             continue_boucle = 0;
 
 /**     */              j= positionDePion(pTer, i, j);
-                        printf("valeur i = %u valeur j = %u\n",i,j);
+                      //  printf("valeur i = %u valeur j = %u\n",i,j);
 
                         if(tour==0){
                             if(pionJauneValide(pTer,i,j)==1){
-                                printf("i : %d  j : %d \n", i, j);
+                               // printf("i : %d  j : %d \n", i, j);
                                 if (terGetXY(pTer,i,j)=='j'){
                                     SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
                                     tour=1;
