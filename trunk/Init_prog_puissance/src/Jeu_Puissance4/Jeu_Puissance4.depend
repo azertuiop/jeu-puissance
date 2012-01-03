@@ -255,3 +255,38 @@
 	<assert.h>
 	"sdlJeu.h"
 
+1325618705 source:/home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.c
+	<stdio.h>
+	"Jeu.h"
+
+1325618705 /home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Jeu.h
+	"Puissance.h"
+	"Terrain.h"
+
+1325618705 /home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.h
+	"Terrain.h"
+
+1325618705 /home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.h
+
+1325618706 source:/home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Puissance.c
+	"Puissance.h"
+	<stdio.h>
+
+1325620211 source:/home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/Terrain.c
+	"Terrain.h"
+	<stdio.h>
+	<malloc.h>
+	<assert.h>
+
+1325618705 source:/home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/main.c
+	<stdio.h>
+	"sdlJeu.h"
+
+1325619758 /home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.h
+	<SDL/SDL.h>
+	"Jeu.h"
+
+1325620702 source:/home/etu/a/p0909908/Projet_LIF7/jeu-puissance/Init_prog_puissance/src/sdlJeu.c
+	<assert.h>
+	"sdlJeu.h"
+
