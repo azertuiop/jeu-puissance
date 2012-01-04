@@ -42,7 +42,7 @@ int puiGetY(const Puissance *pPui)
 
 int pionJauneValide(Terrain * pTer, int i, int j)
 {
-   // printf("\nPuissance-->debut test emplacement jaune\n");
+//    printf("\nPuissance-->debut test emplacement jaune\n");
     if (terEstPositionPersoValide(pTer, i, j)==1){
         terSetXY(pTer,i,j,'j');
 
@@ -54,7 +54,7 @@ int pionJauneValide(Terrain * pTer, int i, int j)
 
 int pionRougeValide(Terrain * pTer, int i, int j){
 
-   // printf("\nPuissance-->debut test emplacement rouge\n");
+//    printf("\nPuissance-->debut test emplacement rouge\n");
     if (terEstPositionPersoValide(pTer, i,j)==1){
         terSetXY(pTer,i,j,'r');
 
