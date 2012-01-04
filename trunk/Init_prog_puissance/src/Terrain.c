@@ -29,6 +29,8 @@ void terInit(Terrain *pTer)
 		for(x=0;x<pTer->dimx;++x)
 			pTer->tab[y][x] = terrain_defaut[y][x];
 
+
+
 }
 
 
@@ -46,15 +48,15 @@ void terLibere(Terrain *pTer)
 }
 
 int terEstPositionPersoValide(const Terrain *pTer, const int i, const int j){
-   /* printf("\nTerrain --> test position valide\n");
-    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
-    printf("    i=%d    j=%d\n",i,j); */
+//    printf("\nTerrain --> test position valide\n");
+//    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
+//    printf("    i=%d    j=%d\n",i,j);
     if( (i>=pTer->cases.xmin)   &&  (i<=pTer->cases.xmax)  &&  (j>=pTer->cases.ymin)   &&  (j<=pTer->cases.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
-   //     printf("    test ok\n\n");
+//        printf("    test ok\n\n");
         return 1;
     }
     else{
-     //   printf("    test echoue car case deja utilisee\n\n");
+//        printf("    test echoue car case deja utilisee\n\n");
         return 0;
     }
 }
