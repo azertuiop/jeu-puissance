@@ -57,17 +57,17 @@ void sdljeuInit(sdlJeu *pSdlJeu)
         break;
         case 2:
         {
-            pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune.bmp");
+            pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune1.bmp");
             if (pSdlJeu->surface_puissance==NULL)
-                pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune.bmp");
+                pSdlJeu->surface_puissance = SDL_load_image("data/images/gagnantjaune1.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
         }
         break;
         case 3:
         {
-            pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
+            pSdlJeu->surface_puissance = SDL_load_image("data/images/acc22.bmp");
             if (pSdlJeu->surface_puissance==NULL)
-                pSdlJeu->surface_puissance = SDL_load_image("data/images/acc2.bmp");
+                pSdlJeu->surface_puissance = SDL_load_image("data/images/acc22.bmp");
             assert( pSdlJeu->surface_puissance!=NULL);
         }
         break;
@@ -89,15 +89,15 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	/*pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
 	if (pSdlJeu->surface_menu_joueur1==NULL)
 		pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
-	assert( pSdlJeu->surface_menu_joueur1!=NULL);
-*/
+    assert( pSdlJeu->surface_menu_joueur1!=NULL);*/
+
 /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
-/*	pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
+	/*pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
 	if (pSdlJeu->surface_menu_joueur2==NULL)
 		pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
 	assert( pSdlJeu->surface_menu_joueur2!=NULL);*/
-//    sdljeuscore(pSdlJeu,'j',0);
-//    sdljeuscore(pSdlJeu,'r',0);
+    sdljeuscore(pSdlJeu,'j',0);
+    sdljeuscore(pSdlJeu,'r',0);
 /**    PION JAUNE      */
 	pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
 	if (pSdlJeu->surface_joueur1==NULL)
@@ -109,6 +109,12 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 	if (pSdlJeu->surface_joueur2==NULL)
 		pSdlJeu->surface_joueur2 = SDL_load_image("data/images/caserouge.bmp");
 	assert( pSdlJeu->surface_joueur2!=NULL);
+
+/**    MENU EXIT     */
+	pSdlJeu->surface_exit = SDL_load_image("data/images/exit.bmp");
+	if (pSdlJeu->surface_exit==NULL)
+		pSdlJeu->surface_exit = SDL_load_image("data/images/exit.bmp");
+	assert( pSdlJeu->surface_exit!=NULL);
 }
 
 
@@ -129,6 +135,8 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 		{
             if((x==0)&&(y==0))
                 SDL_apply_surface(  pSdlJeu->surface_placement, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+            if((x==7)&&(y==1))
+                SDL_apply_surface(  pSdlJeu->surface_exit, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
 		    if((x<=getDimX(pTer)-2)&&(y>=1)&&(y<=getDimY(pTer)-1))
                 SDL_apply_surface(  pSdlJeu->surface_case, pSdlJeu->surface_ecran, x*TAILLE_SPRITE, y*TAILLE_SPRITE);
             if((x==getDimX(pTer)-1)&&(y==2))
@@ -205,6 +213,8 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
                         int i= event.button.x/taille_case;
 //                        printf("valeur i = %u valeur j = %u\n",i,j);
+                        if(i==7 && j==1) //Appui EXIT
+                            continue_boucle = 0;
 
 /**     */              j= positionDePion(pTer, i, j);
                         //printf("valeur i = %u valeur j = %u\n",i,j);
