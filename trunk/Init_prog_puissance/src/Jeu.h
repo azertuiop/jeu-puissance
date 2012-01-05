@@ -72,23 +72,4 @@ Terrain *jeuGetModifTerrainPtr(Jeu *pJeu);
  */
 const Puissance *jeuGetConstPuissancePtr(const Jeu *);
 
-
- Cases jeuGetConstCasesPtr( Jeu *pJeu);
-
-/* ************************************************************************ */
-/*           Procédure gestion de clavier                                    */
-/* ************************************************************************ */
-
-
-/**
- * @fn void jeuActionClavier(Jeu *j, const char);
- * @brief Gestion de l'utilisation de clavier
- *
- * @param[in, out] Pointeur de la  structure   Jeu.
- * @param[in] Entier pour sauvegarder l'action de clavier.
- * @return 0 si tout est OK
- */
-void jeuActionClavier(Jeu *j, const char);
-
-/*Joueur *jeuGetJoueurPtr(Jeu *);*/
 #endif

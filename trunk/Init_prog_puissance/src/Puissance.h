@@ -24,10 +24,6 @@ typedef struct{
  * @param[in, out] Pointeur de type Puissance
  */
 void puiInit(Puissance *);
-void puiGauche(Puissance *, const Terrain *);
-void puiDroite(Puissance *, const Terrain *);
-void puiHaut(Puissance *, const Terrain *);
-void puiBas(Puissance *, const Terrain *);
 
 /**
  * @fn int puiGetX(const Puissance *);

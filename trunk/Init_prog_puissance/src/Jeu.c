@@ -17,11 +17,6 @@ Puissance *jeuGetPuissancePtr(Jeu *pJeu)
 {
 	return &(pJeu->pui);
 }
-/*
-Joueur *jeuGetJoueurPtr(Jeu *pJeu)
-{
-    return &(pJeu->jou);
-}*/
 
 const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 {
@@ -33,30 +28,7 @@ const Terrain *jeuGetConstTerrainPtr(const Jeu *pJeu)
 	return &(pJeu->ter);
 }
 
-
 const Puissance *jeuGetConstPuissancePtr(const Jeu *pJeu)
 {
 	return &(pJeu->pui);
 }
-
-
-/*
-void jeuActionClavier(Jeu *pJeu, const char touche) // a adapter pour l'utilisation de la souris
-{
-	switch(touche)
-	{
-		case 'q' :
-				puiGauche(&(pJeu->pui), &(pJeu->ter));
-				break;
-		case 'd' :
-				puiDroite(&(pJeu->pui), &(pJeu->ter));
-				break;
-		case 'z' :
-				puiHaut(&(pJeu->pui), &(pJeu->ter));
-				break;
-		case 's' :
-				puiBas(&(pJeu->pui), &(pJeu->ter));
-				break;
-	}
-}
-*/
