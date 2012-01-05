@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-
 #include "sdlJeu.h"
 
 int main ( int argc, char** argv )

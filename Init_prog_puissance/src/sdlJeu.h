@@ -26,5 +26,7 @@ void sdljeuDetruit(sdlJeu *);
 void sdljeuscore(sdlJeu *, const char,const int);
 void sdljeutour(sdlJeu *);
 void sdljeuRecommence(sdlJeu *,const int jeuContinu, const int enter, const char);
+SDL_Surface *SDL_load_image(const char* filename );
+void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
 
 #endif
