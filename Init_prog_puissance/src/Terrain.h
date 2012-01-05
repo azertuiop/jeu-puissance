@@ -1,3 +1,4 @@
+
 #ifndef _TERRAIN_H
 #define _TERRAIN_H
 
@@ -26,7 +27,7 @@ typedef struct{
 typedef struct{
 	int dimx; /**Données de dimension X*/
 	int dimy; /**Données de dimension Y*/
-	Cases cases;
+	Cases cases; /**Définir les dimensions de l'espace du jeu*/
 	char **tab; /**Pointeur utilisé dans la construction du Terrain avec dimx et dimy*/
 } Terrain;
 
