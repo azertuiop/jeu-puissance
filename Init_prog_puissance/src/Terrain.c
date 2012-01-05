@@ -8,12 +8,9 @@ void terInit(Terrain *pTer)
 	int x,y;
 
 	const char terrain_defaut[7][8]={};
-//	const char terrain_defaut[11][10]={};
 
 	pTer->dimx = 8;
 	pTer->dimy = 7;
-//	pTer->dimx = 11;
-//	pTer->dimy = 10;
 	pTer->cases.xmin=0;
 	pTer->cases.xmax=pTer->dimx-2;
 	pTer->cases.ymin=1;
@@ -88,3 +85,20 @@ const int getDimY(const Terrain *pTer)
 	return pTer->dimy;
 }
 
+int terPlein(const Terrain *pTer)
+{
+    int i, count=0;
+    for(i=pTer->cases.xmax; i>=0; i--)
+    if ((terGetXY(pTer,i,1)=='j')||(terGetXY(pTer,i,1)=='r'))
+    {
+        count++;
+    }
+    if (count==(pTer->cases.xmax+1))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
