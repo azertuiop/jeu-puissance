@@ -1,6 +1,7 @@
 #include "Puissance.h"
 #include <stdio.h>
 
+
 void puiInit(Puissance *pPui)
 {
 	pPui->x=pPui->y=0;

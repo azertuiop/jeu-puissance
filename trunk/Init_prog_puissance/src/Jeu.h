@@ -1,9 +1,9 @@
+
 #ifndef _JEU_H
 #define _JEU_H
 
 #include "Puissance.h"
 #include "Terrain.h"
-
 
 /**
  * @struct Jeu

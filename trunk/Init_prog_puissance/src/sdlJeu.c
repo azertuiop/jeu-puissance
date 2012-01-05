@@ -1,3 +1,4 @@
+/**AL RUBI - NOROUZZADEH - SLIMANI */
 #include <assert.h>
 #include "sdlJeu.h"
 
@@ -168,7 +169,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
 			if ( event.type == SDL_QUIT )
 				continue_boucle = 0;
 
-            switch(event.type)
+            switch(event.type) /**Gestion des événements de la sourie et clavier */
             {
                 case SDL_QUIT:
                     continue_boucle = 0;
@@ -337,7 +338,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurJ==1)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
             pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score1.bmp");
             if (pSdlJeu->surface_menu_joueur1==NULL)
                 pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score1.bmp");
@@ -345,7 +346,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurJ==2)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
             pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score2.bmp");
             if (pSdlJeu->surface_menu_joueur1==NULL)
                 pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score2.bmp");
@@ -353,7 +354,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurJ==3)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
             pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score3.bmp");
             if (pSdlJeu->surface_menu_joueur1==NULL)
                 pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score3.bmp");
@@ -372,7 +373,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurR==1)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
             pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score1rouge.bmp");
             if (pSdlJeu->surface_menu_joueur2==NULL)
                 pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score1rouge.bmp");
@@ -380,7 +381,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurR==2)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
             pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score2rouge.bmp");
             if (pSdlJeu->surface_menu_joueur2==NULL)
                 pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score2rouge.bmp");
@@ -388,7 +389,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
         }
         else if(scoreJoueurR==3)
         {
-            /**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
+            /*    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
             pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score3rouge.bmp");
             if (pSdlJeu->surface_menu_joueur2==NULL)
                 pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score3rouge.bmp");
@@ -419,8 +420,15 @@ void sdljeutour(sdlJeu *pSdlJeu)
 
 void sdljeuDetruit( sdlJeu *pSdlJeu)
 {
+	SDL_FreeSurface( pSdlJeu->surface_ecran );
 	SDL_FreeSurface( pSdlJeu->surface_puissance );
 	SDL_FreeSurface( pSdlJeu->surface_case );
+	SDL_FreeSurface( pSdlJeu->surface_placement );
+	SDL_FreeSurface( pSdlJeu->surface_menu_joueur1 );
+	SDL_FreeSurface( pSdlJeu->surface_menu_joueur2 );
+	SDL_FreeSurface( pSdlJeu->surface_joueur1 );
+	SDL_FreeSurface( pSdlJeu->surface_joueur2 );
+	SDL_FreeSurface( pSdlJeu->surface_exit );
 	SDL_Quit();
 }
 

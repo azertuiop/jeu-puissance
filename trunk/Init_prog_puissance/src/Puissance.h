@@ -1,12 +1,11 @@
+
 #ifndef _PUISSANCE_H
 #define _PUISSANCE_H
 
 #include "Terrain.h"
 
-
-
 /**
- * @fn struct Puissance
+ * @struct struct Puissance
  * @brief Gestion des coordonnées x et y
  *
  * Les coordonnées x et y sont utilisées dans
@@ -14,7 +13,7 @@
  *
  */
 typedef struct{
-	int x,y;
+	int x,y; /**coordonnées x et y*/
 } Puissance;
 
 /**
@@ -58,7 +57,26 @@ int pionJauneValide(Terrain *, int i, int j);
  * @return 1 si tout est OK
  */
 int pionRougeValide(Terrain *, int i, int j);
-int balayage(const Terrain *pTer, const int x,const int y,const char val);
+
+/**
+ * @fn int positionDePion(const Terrain *pTer, const int x, const int y);
+ * @brief Renvoi la position où il faut que le pion soit insérer (la case la plus basse qui soit libre) dans la colonne vertical
+ *
+ * @param[in, out] Pointeur Terrain, coordonnées de la case d'analyse de départ
+ * @return Renvoi la coordonnée verticale de la case où le pion doit être insérer
+ */
 int positionDePion(const Terrain *pTer, const int x, const int y);
+
+
+/**
+ * @fn int balayage(const Terrain *pTer, const int x,const int y,const char val);
+ * @brief Balayage des cases dans le sens horizontal, vertical et diagonal, pour détérminer l'alignement des 4 pions de même couleur
+ *
+ * @param[in, out] Pointeur Terrain, coordonnées de la case d'analyse de départ et la couleur de pion à chercher
+ * @return 1 si 4 pions sont alignés, 0 sinon
+ */
+
+int balayage(const Terrain *pTer, const int x,const int y,const char val);
+
 
 #endif

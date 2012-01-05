@@ -5,18 +5,116 @@
 #include <SDL/SDL.h>
 #include "Jeu.h"
 
-
-typedef struct 
-{
-	Jeu jeu;
-	SDL_Surface* surface_ecran;
-	SDL_Surface* surface_puissance;
-	SDL_Surface* surface_case;
+/**
+ * @fn struct sdlJeu
+ * @brief Gestion des différentes surfaces du jeu
+ *
+ * Les coordonnées x et y sont utilisées dans
+  la gestion de positionnement des pions
+ *
+ */
+typedef struct{
+	Jeu jeu; /**utilisation structure Jeu pour la gestion du terrain et fonctionnemeent du jeu*/
+	SDL_Surface* surface_ecran; /**Gestion surface ecran*/
+	SDL_Surface* surface_puissance; /**Gestion surface du jeu Puissance*/
+	SDL_Surface* surface_case; /**Gestion surface ecran*/
+	SDL_Surface* surface_placement;/**Gestion surface de placement des pions*/
+	SDL_Surface* surface_menu_joueur1; /**Gestion surface de score de joueur 1*/
+	SDL_Surface* surface_menu_joueur2; /**Gestion surface de score de joueur 2*/
+	SDL_Surface* surface_joueur1; /**Gestion surface de pions de joueur 1*/
+	SDL_Surface* surface_joueur2; /**Gestion surface de pions de joueur 2*/
+	SDL_Surface* surface_exit; /**Gestion surface de menu EXIT*/
 } sdlJeu;
 
+/**
+ * @fn void sdljeuInit(sdlJeu *);
+ * @brief Initialisation du jeu en chargeant les différentes images
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat
+ * 
+ */
 void sdljeuInit(sdlJeu *);
+
+/**
+ * @fn void sdljeuAff(sdlJeu *)
+ * @brief Afficher la surface et le terrain du jeu
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat
+ * 
+ */
+void sdljeuAff(sdlJeu *);
+
+/**
+ * @fn void sdljeuBoucle(sdlJeu *)
+ * @brief Boucle principale de la gestion du jeu.
+ * Gére la gestion de la sourie et les fonctionnalitées du jeu!
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée
+ * 
+ */
 void sdljeuBoucle(sdlJeu *);
-void sdljeuLibere(sdlJeu *);
+
+/**
+ * @fn void sdljeuDetruit(sdlJeu *)
+ * @brief Libère les différentes allocations de mémoire et chargement des images dans la mémoire une fois le jeu est terminé
+ * 
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat
+ * 
+ */
 void sdljeuDetruit(sdlJeu *);
+
+/**
+ * @fn void sdljeuscore(sdlJeu *, const char,const int)
+ * @brief Gestion des scores des différents joueurs.
+ * 
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat, la couleur de pion(symbolise un joueur) et le score à attribuer
+ * 
+ */
+void sdljeuscore(sdlJeu *, const char,const int);
+
+/**
+ * @fn void sdljeutour(sdlJeu *)
+ * @brief Gestion d'ordre des joueurs dans le jeu!
+ * 
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat
+ * 
+ */
+void sdljeutour(sdlJeu *);
+
+/**
+ * @fn void sdljeuRecommence(sdlJeu *,const int, const int, const char)
+ * @brief Gestion de la répétition du jeu en fonction des différents scores
+ * 
+ *
+ * @param[in, out] Pointeur de type sdlJeu en mode donnée-résultat, 
+  entier en mode donnée pour la gestions des différents niveaux du jeu,
+  entier en mode donnée pour l'appui de bouton Entrée et la couleur du pion 
+ * 
+ */
+void sdljeuRecommence(sdlJeu *,const int jeuContinu, const int enter, const char);
+
+/**
+ * @fn SDL_Surface *SDL_load_image(const char* filename )
+ * @brief fonction résponsable du chargement des images du jeu dans la mémoire
+ * 
+ *
+ * @param[in, out] Nom du fichier à charger en mode donnée
+ * 
+ */
+SDL_Surface *SDL_load_image(const char* filename );
+
+/**
+ * @fn void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y )
+ * @brief Applique et construit sur l'écran d'affichage une image souhaitée à aprtir d'une source de surface dans une autre surface de distination
+ * 
+ *
+ * @param[in, out] Surface source en mode donnée-résultat, surface destination en mode donnée-résultat et les coordonnées x et y en mode donnée-résultat
+ * 
+ */
+void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y );
+
 
 #endif
