@@ -1,4 +1,3 @@
-/**AL RUBI - NOROUZZADEH - SLIMANI */
 #include <assert.h>
 #include "sdlJeu.h"
 
@@ -79,19 +78,9 @@ void sdljeuInit(sdlJeu *pSdlJeu)
 		pSdlJeu->surface_placement = SDL_load_image("data/images/casejaune.bmp");
 	assert( pSdlJeu->surface_placement!=NULL);
 
-/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 1      */
-	/*pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
-	if (pSdlJeu->surface_menu_joueur1==NULL)
-		pSdlJeu->surface_menu_joueur1 = SDL_load_image("data/images/score0.bmp");
-    assert( pSdlJeu->surface_menu_joueur1!=NULL);*/
-
-/**    AFFICHAGE MENU POUR LE COMPTAGE DE SCORE    DE JOUEUR 2      */
-	/*pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
-	if (pSdlJeu->surface_menu_joueur2==NULL)
-		pSdlJeu->surface_menu_joueur2 = SDL_load_image("data/images/score0rouge.bmp");
-	assert( pSdlJeu->surface_menu_joueur2!=NULL);*/
     sdljeuscore(pSdlJeu,'j',0);
     sdljeuscore(pSdlJeu,'r',0);
+
 /**    PION JAUNE      */
 	pSdlJeu->surface_joueur1 = SDL_load_image("data/images/casejaune.bmp");
 	if (pSdlJeu->surface_joueur1==NULL)
@@ -122,7 +111,7 @@ void sdljeuAff(sdlJeu *pSdlJeu)
 
 	/* Remplir l'écran de bleu */
 	SDL_FillRect( pSdlJeu->surface_ecran, &pSdlJeu->surface_ecran->clip_rect, SDL_MapRGB( pSdlJeu->surface_ecran->format, 0, 42, 224 ) );
-//	SDL_FillRect( pSdlJeu->surface_placement, &pSdlJeu->surface_placement->clip_rect, SDL_MapRGB( pSdlJeu->surface_placement->format,  0, 42, 224 ) );	for (x=0;x<getDimX(pTer);++x)
+
 	for (x=0;x<getDimX(pTer);++x)
 	{
 		for (y=0;y<getDimY(pTer);++y)
@@ -213,6 +202,11 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                             if(pionJauneValide(pTer,i,j)==1)
                             {
                                 //printf("i : %d  j : %d \n", i, j);
+                                if (terPlein(pTer)==1)
+                                {
+                                    StartDetectEven=0;
+                                    sdljeuRecommence(pSdlJeu, 3, 0, 'n');
+                                }
                                 if (terGetXY(pTer,i,j)=='j')
                                 {
                                     SDL_apply_surface(  pSdlJeu->surface_joueur1, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
@@ -220,13 +214,6 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                                     sdljeutour(pSdlJeu);
                                         if(balayage(pTer,i,j,'j')==1)
                                         {
-                                            /*jeuContinu = 3;
-                                            printf("scoreJoueurJ %d\n",scoreJoueurJ);
-                                            printf("jaune est ganiee \n");
-                                            sdljeuInit(pSdlJeu);
-                                            sdljeuAff(pSdlJeu);
-                                            sdljeuscore(pSdlJeu,'j',1);
-                                            enter=0;*/
                                             StartDetectEven=0;
                                             sdljeuRecommence(pSdlJeu, 3, 0, 'j');
                                             continue;
@@ -237,6 +224,11 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                         }else{
                             if(pionRougeValide(pTer,i,j)==1)
                             {
+                                if (terPlein(pTer)==1)
+                                {
+                                    StartDetectEven=0;
+                                    sdljeuRecommence(pSdlJeu, 3, 0, 'n');
+                                }
                                 if (terGetXY(pTer,i,j)=='r')
                                 {
                                     SDL_apply_surface(  pSdlJeu->surface_joueur2, pSdlJeu->surface_case, i*TAILLE_SPRITE, j*TAILLE_SPRITE);
@@ -245,13 +237,6 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                                         if(balayage(pTer,i,j,'r')==1)
                                         {
 //                                            printf("scoreJoueurR %d\n",scoreJoueurR);
-//                                            printf("rouge est ganiee \n");
-                                            /*jeuContinu = 3;
-                                            enter=0;
-                                            StartDetectEven=0;
-                                            sdljeuInit(pSdlJeu);
-                                            sdljeuAff(pSdlJeu);
-                                            sdljeuscore(pSdlJeu,'r',1);*/
                                             StartDetectEven=0;
                                             sdljeuRecommence(pSdlJeu, 3, 0, 'r');
                                         }
@@ -292,28 +277,17 @@ void sdljeuRecommence(sdlJeu *pSdlJeu,const int jeuCont, const int ent, const ch
         scoreJoueurJ=0;
         scoreJoueurR=0;
         sdljeuAff(pSdlJeu);
-//        sdljeuscore(pSdlJeu,c,1);
     }
 
     else if((c=='r')&&(scoreJoueurR==3))
     {
-//        tour=0;
         jeuContinu =1;
         enter=ent;
         scoreJoueurJ=0;
         scoreJoueurR=0;
         sdljeuInit(pSdlJeu);
         sdljeuAff(pSdlJeu);
-        //sdljeuscore(pSdlJeu,c,1);
     }
-    /*else
-    {
-        jeuContinu = jeuCont;
-        enter=ent;
-        sdljeuInit(pSdlJeu);
-        sdljeuAff(pSdlJeu);
-        sdljeuscore(pSdlJeu,c,1);
-    }*/
 }
 
 void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
@@ -322,7 +296,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
     {
         if(c=='j')
             scoreJoueurJ++;
-        else
+        else if(c=='r')
             scoreJoueurR++;
     }
 
@@ -361,7 +335,7 @@ void sdljeuscore(sdlJeu *pSdlJeu, const char c,const int ajout)
             assert( pSdlJeu->surface_menu_joueur1!=NULL);
         }
     }
-    else
+    else if(c=='r')
     {
         if(scoreJoueurR==0)
         {
@@ -462,13 +436,13 @@ SDL_Surface *SDL_load_image(const char* filename )
 
 void SDL_apply_surface( SDL_Surface* source, SDL_Surface* destination, int x, int y )
 {
-	/* Make a temporary rectangle to hold the offsets */
+	/* créer un rectangle temporaire */
 	SDL_Rect offset;
 
-	/* Give the offsets to the rectangle */
+	/* donne l'offset du rectangle à construir */
 	offset.x = x;
 	offset.y = y;
 
-	/* Blit the surface */
+	/* construir la surface */
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }

@@ -52,7 +52,6 @@ void terInit(Terrain *);
  * @return 0 si tout est OK
  */
 void terLibere(Terrain *);
-//int terEstPositionPersoValide(const Terrain *, const int x, const int y);
 
 /**
  * @fn int terEstPositionPersoValide(const Terrain *, Cases , const int , const int );
@@ -98,5 +97,14 @@ const int getDimX(const Terrain *);
  * @return la valeur de dimy
  */
 const int getDimY(const Terrain *);
+
+/**
+ * @fn int terPlein(const Terrain *)
+ * @brief Parcourir le Terrain de jeu pour déternimer s'il est plein et que personne gagne
+ *
+ * @param[in, out] Pointeur Terrain en mode donnée
+ * @return 1 si le Terrain est plein et 0 sinon
+ */
+int terPlein(const Terrain *);
 
 #endif
