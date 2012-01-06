@@ -189,19 +189,19 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                     }
                     if(StartDetectEven == 1)
                     {
-                        int j= event.button.y/taille_case; //position du click de la souris dans le tableau//
+                        int j= event.button.y/taille_case; /*position du click de la souris dans le tableau*/
                         int i= event.button.x/taille_case;
-//                      printf("valeur i = %u valeur j = %u\n",i,j);
-                        if(i==7 && j==1) //Appui EXIT
+/*                      printf("valeur i = %u valeur j = %u\n",i,j);*/
+                        if(i==7 && j==1) /*Appui EXIT*/
                             continue_boucle = 0;
 
                         j= positionDePion(pTer, i, j);
-                        //printf("valeur i = %u valeur j = %u\n",i,j);
+                        /*printf("valeur i = %u valeur j = %u\n",i,j);*/
 
                         if(tour==0){
                             if(pionJauneValide(pTer,i,j)==1)
                             {
-                                //printf("i : %d  j : %d \n", i, j);
+                                /*printf("i : %d  j : %d \n", i, j);*/
                                 if (terPlein(pTer)==1)
                                 {
                                     StartDetectEven=0;
@@ -236,7 +236,7 @@ void sdljeuBoucle(sdlJeu *pSdlJeu)
                                     sdljeutour(pSdlJeu);
                                         if(balayage(pTer,i,j,'r')==1)
                                         {
-//                                            printf("scoreJoueurR %d\n",scoreJoueurR);
+/*                                            printf("scoreJoueurR %d\n",scoreJoueurR);*/
                                             StartDetectEven=0;
                                             sdljeuRecommence(pSdlJeu, 3, 0, 'r');
                                         }
@@ -268,7 +268,6 @@ void sdljeuRecommence(sdlJeu *pSdlJeu,const int jeuCont, const int ent, const ch
 
     if((c=='j')&&(scoreJoueurJ==3))
     {
-//        tour=1;
         jeuContinu =2;
         enter=ent;
 
