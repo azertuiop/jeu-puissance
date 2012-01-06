@@ -13,7 +13,7 @@
  *
  */
 typedef struct{
-	int x,y;
+	int x,y; /**coordonnées x et y*/
 } Puissance;
 
 /**

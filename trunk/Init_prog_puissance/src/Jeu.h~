@@ -4,9 +4,6 @@
 
 #include "Puissance.h"
 #include "Terrain.h"
-/**
- *@author AL RUBI - NOROUZZADEH - SLIMANI
- */
 
 /**
  * @struct Jeu
@@ -21,7 +18,7 @@ typedef struct
 {
 	Terrain ter;    /**Données  du  terrain*/
 	Puissance pui;  /**Données  du  jeu puissance */
-/*	Joueur jou;*/
+
 }Jeu;
 
 /**

@@ -75,7 +75,6 @@ int positionDePion(const Terrain *pTer, const int x, const int y);
  * @param[in, out] Pointeur Terrain, coordonnées de la case d'analyse de départ et la couleur de pion à chercher
  * @return 1 si 4 pions sont alignés, 0 sinon
  */
-
 int balayage(const Terrain *pTer, const int x,const int y,const char val);
 
 

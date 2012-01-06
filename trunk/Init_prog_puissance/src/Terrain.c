@@ -42,15 +42,15 @@ void terLibere(Terrain *pTer)
 }
 
 int terEstPositionPersoValide(const Terrain *pTer, const int i, const int j){
-//    printf("\nTerrain --> test position valide\n");
-//    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
-//    printf("    i=%d    j=%d\n",i,j);
+/*    printf("\nTerrain --> test position valide\n");
+    printf("    lettre dans tab -->%c\n",pTer->tab[j][i]);
+    printf("    i=%d    j=%d\n",i,j);
+*/
     if( (i>=pTer->cases.xmin)   &&  (i<=pTer->cases.xmax)  &&  (j>=pTer->cases.ymin)   &&  (j<=pTer->cases.ymax)  &&  (pTer->tab[j][i]!='r')  &&  (pTer->tab[j][i]!='j')    ){
-//        printf("    test ok\n\n");
+
         return 1;
     }
     else{
-//        printf("    test echoue car case deja utilisee\n\n");
         return 0;
     }
 }
@@ -72,7 +72,7 @@ void terSetXY(const Terrain *pTer, const int x, const int y, const char pion)
 	assert( x<pTer->dimx ) ;
 	assert( y<pTer->dimy ) ;
 	pTer->tab[y][x] = pion;
-//	printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));
+/*	printf("Terrain --> terSetXY: %c\n",(pTer->tab[y][x]));*/
 }
 
 const int getDimX(const Terrain *pTer)

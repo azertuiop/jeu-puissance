@@ -8,7 +8,5 @@ int main ( int argc, char** argv )
 	sdljeuBoucle( &sj );
 	sdljeuDetruit( &sj );
 
-
-	printf("Fin\n");
 	return 0;
 }

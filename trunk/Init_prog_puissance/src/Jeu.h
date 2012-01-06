@@ -18,7 +18,7 @@ typedef struct
 {
 	Terrain ter;    /**Données  du  terrain*/
 	Puissance pui;  /**Données  du  jeu puissance */
-/*	Joueur jou;*/
+
 }Jeu;
 
 /**

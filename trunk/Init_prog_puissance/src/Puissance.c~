@@ -19,7 +19,7 @@ int puiGetY(const Puissance *pPui)
 
 int pionJauneValide(Terrain * pTer, int i, int j)
 {
-//    printf("\nPuissance-->debut test emplacement jaune\n");
+/*    printf("\nPuissance-->debut test emplacement jaune\n");*/
     if (terEstPositionPersoValide(pTer, i, j)==1){
         terSetXY(pTer,i,j,'j');
 
@@ -31,7 +31,7 @@ int pionJauneValide(Terrain * pTer, int i, int j)
 
 int pionRougeValide(Terrain * pTer, int i, int j){
 
-//    printf("\nPuissance-->debut test emplacement rouge\n");
+/*    printf("\nPuissance-->debut test emplacement rouge\n");*/
     if (terEstPositionPersoValide(pTer, i,j)==1){
         terSetXY(pTer,i,j,'r');
 
@@ -43,7 +43,7 @@ int pionRougeValide(Terrain * pTer, int i, int j){
 int positionDePion(const Terrain *pTer, const int x, const int y){
 
     int i;
-//    for(i=c.ymax; i>=c.ymin; i--)
+/*    for(i=c.ymax; i>=c.ymin; i--)*/
     for(i=pTer->cases.ymax; i>=1; i--)
     if (terEstPositionPersoValide(pTer, x, i)==1){
         return i;
@@ -69,7 +69,7 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
 
         else
             count=0;
-//        printf("ligne   x: %d y: %d i: %d count: %d \n", x, y, i, count);
+/*        printf("ligne   x: %d y: %d i: %d count: %d \n", x, y, i, count);*/
     }
 
 
@@ -85,7 +85,7 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
         }
         else
             count=0;
-//        printf("colonne    x: %d y: %d i: %d count: %d \n", x, y, i, count);
+/*        printf("colonne    x: %d y: %d i: %d count: %d \n", x, y, i, count);*/
     }
 
 
@@ -95,14 +95,14 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
 
     xMax=xMin=x;
     yMax=yMin=y;
-//    printf("BAS \n");
+/*    printf("BAS \n");*/
 	while((xMin>0)&&(yMax<getDimY(pTer)-1))
 	{
 		xMin--;
 		yMax++;
 	}
 
-//printf("HAUT \n");
+/*printf("HAUT \n");*/
 	while(((xMax<getDimX(pTer)-2)&&(yMin>1)))
 	{
 		xMax++;
@@ -122,8 +122,8 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
         else
             count=0;
 
-//        printf("diagonale gauch    xMin: %d yMax: %d xMax: %d i: %d count: %d val: %c\n",
-//                xMin, yMax, xMax, i, count, val);
+/*        printf("diagonale gauch    xMin: %d yMax: %d xMax: %d i: %d count: %d val: %c\n",
+                xMin, yMax, xMax, i, count, val);*/
         yMax--;
         xMin++;
     }
@@ -140,7 +140,7 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
 		yMax++;
 	}
 
-//printf("HAUT \n");
+/*printf("HAUT \n");*/
 	while(((xMin>0)&&(yMin>1)))
 	{
 		xMin--;
@@ -150,8 +150,8 @@ int balayage(const Terrain *pTer, const int x,const int y,const char val)
     count=0;
     for(i=xMax;i>=xMin;i--)
     {
-//        printf("diagonale dorat    xMin: %d yMax: %d xMax: %d yMin: %d i: %d count: %d val: %c\n",
-//                xMin, yMax, xMax, yMin, i, count, val);
+/*       printf("diagonale dorat    xMin: %d yMax: %d xMax: %d yMin: %d i: %d count: %d val: %c\n",
+                xMin, yMax, xMax, yMin, i, count, val);*/
         if(terGetXY(pTer,xMax,yMax) == val)
         {
             count++;
