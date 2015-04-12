@@ -1,0 +1,1 @@
+réaliser un jeu puissance 4 en projet LIF7 avec interface graphique (SDL)
